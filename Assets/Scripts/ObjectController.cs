@@ -3,27 +3,27 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class ObjectController : MonoBehaviour {
-	public float maxHeight;
-	public float minHeight;
+	public float AlturaMax;
+	public float AlturaMin;
 
 	public float rateSpawn;
 	private float currentRateSpawn;
 
-	public int maxMeteoro;
+	public int maxNuvem;
 	
 	public GameObject prefab;
 
 	private bool _isGameOver;
 
-	public List<GameObject> meteoro;
+	public List<GameObject> nuvem;
 
 
 	// Use this for initialization
 	void Start () {
-		for (int i=0; i < maxMeteoro; i++) {
-			GameObject tempMeteoro = Instantiate(prefab) as GameObject;
-			meteoro.Add(tempMeteoro);
-			tempMeteoro.SetActive(false);
+		for (int i=0; i < maxNuvem; i++) {
+			GameObject tempNuvem = Instantiate(prefab) as GameObject;
+			nuvem.Add(tempNuvem);
+			tempNuvem.SetActive(false);
 		}
 	}
 	
@@ -39,17 +39,17 @@ public class ObjectController : MonoBehaviour {
 	}
 	private void Spawn() {
 
-		float randPosition = Random.Range (minHeight, maxHeight);
-		GameObject tempMeteoro = null;
-		for (int i=0; i < maxMeteoro; i++) {
-			if(meteoro[i].activeSelf == false) {
-				tempMeteoro = meteoro[i];
+		float randPosition = Random.Range (AlturaMax, AlturaMin);
+		GameObject tempNuvem = null;
+		for (int i=0; i < maxNuvem; i++) {
+			if(nuvem[i].activeSelf == false) {
+				tempNuvem = nuvem[i];
 				break;
 			}
 		}
-			if (tempMeteoro != null) {
-			tempMeteoro.transform.position = new Vector3(transform.position.x, randPosition, transform.position.y);
-				tempMeteoro.SetActive(true);
+			if (tempNuvem != null) {
+			tempNuvem.transform.position = new Vector3(transform.position.x, randPosition, transform.position.y);
+				tempNuvem.SetActive(true);
 
 
 
