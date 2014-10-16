@@ -17,6 +17,7 @@ public class DigletScript : MonoBehaviour {
 		digletSol = transform.FindChild ("diglett-sol");
 		digletLa = transform.FindChild ("diglett-la");
 		digletSi = transform.FindChild ("diglett-si");
+
 		listadiglets.Add (digletDo);
 		listadiglets.Add (digletRe);
 		listadiglets.Add (digletMi);
@@ -25,18 +26,11 @@ public class DigletScript : MonoBehaviour {
 		listadiglets.Add (digletLa);
 		listadiglets.Add (digletSi);
 
-
 		Upall ();
-
-
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
-
-		//Debug.Log("here");
-
 
 		if (Input.GetMouseButtonDown (0)) {
 			Vector2 pos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
@@ -46,14 +40,21 @@ public class DigletScript : MonoBehaviour {
 				foreach (Collider2D c in col)
 					if (c.CompareTag("diglet")){
 						Hitdiglet(c.transform);
-						print(c.transform);
 					}
-			
 		}
-
-
-
 	
+		//Codigo para multitoque. Esta comentado, pois so funciona no smartphone, no emulador do unity nao faz nada. 
+//
+//		Touch myTouch = Input.GetTouch(0);
+//		Vector2 pos = Camera.main.ScreenToWorldPoint(myTouch.position);
+//		Collider2D[] myTouches = Physics2D.OverlapPointAll(pos);
+//		if (myTouches.Length > 0){
+//			foreach(Collider2D c in myTouches){
+//				if(c.CompareTag("diglet")){
+//					Hitdiglet(c.transform);
+//				}
+//			}
+//		}
 	}
 
 	void Upall() {
@@ -61,12 +62,10 @@ public class DigletScript : MonoBehaviour {
 			print (i);
 			Updiglet (i);
 		}
-
 	}
 
 	void Updiglet(Transform a){
 		a.rigidbody2D.gravityScale = -5;
-
 	}
 
 	void Hitdiglet(Transform b){
