@@ -52,40 +52,40 @@ public class DigletScript : MonoBehaviour {
 												
 					}
 
-					if(c.CompareTag("digletRe")){
+					else if(c.CompareTag("digletRe")){
 						Hitdiglet(c.transform);
 						destino.SendMessage("mudarEstadoRe");
 				
 					}
 
-				if(c.CompareTag("digletMi")){
-					Hitdiglet(c.transform);
-					destino.SendMessage("mudarEstadoMi");
-					
-				}
+					else if(c.CompareTag("digletMi")){
+						Hitdiglet(c.transform);
+						destino.SendMessage("mudarEstadoMi");
+							
+					}
 
-				if(c.CompareTag("digletFa")){
-					Hitdiglet(c.transform);
-					destino.SendMessage("mudarEstadoFa");
-					
-				}
+					else if(c.CompareTag("digletFa")){
+						Hitdiglet(c.transform);
+						destino.SendMessage("mudarEstadoFa");
+						
+					}
 
-				if(c.CompareTag("digletSol")){
-					Hitdiglet(c.transform);
-					destino.SendMessage("mudarEstadoSol");
-					
-				}
+					else if(c.CompareTag("digletSol")){
+						Hitdiglet(c.transform);
+						destino.SendMessage("mudarEstadoSol");
+						
+					}
 
-				if(c.CompareTag("digletLa")){
-					Hitdiglet(c.transform);
-					destino.SendMessage("mudarEstadoLa");
-					
-				}
-				if(c.CompareTag("digletSi")){
-					Hitdiglet(c.transform);
-					destino.SendMessage("mudarEstadoSi");
-					
-				}
+					else if(c.CompareTag("digletLa")){
+						Hitdiglet(c.transform);
+						destino.SendMessage("mudarEstadoLa");
+						
+					}
+					else if(c.CompareTag("digletSi")){
+						Hitdiglet(c.transform);
+						destino.SendMessage("mudarEstadoSi");
+						
+					}	
 				}
 			}
 

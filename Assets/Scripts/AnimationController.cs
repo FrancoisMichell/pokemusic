@@ -4,7 +4,6 @@ using System.Collections;
 public class AnimationController : MonoBehaviour {
 
 	private Animator notaMusical;
-	public Transform sprite;
 
 	// Use this for initialization
 	void Start () {
