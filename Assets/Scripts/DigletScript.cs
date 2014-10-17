@@ -6,10 +6,11 @@ public class DigletScript : MonoBehaviour {
 
 	private Transform digletDo, digletRe, digletMi, digletFa, digletSol, digletLa, digletSi;
 	private List<Transform> listadiglets = new List<Transform>();
+	private GameObject destino;
 
-
+		
 	// Use this for initialization
-	void Start () {
+	void Start () {		
 		digletDo = transform.FindChild ("diglett-do");
 		digletRe = transform.FindChild ("diglett-re");
 		digletMi = transform.FindChild ("diglett-mi");
@@ -18,6 +19,8 @@ public class DigletScript : MonoBehaviour {
 		digletLa = transform.FindChild ("diglett-la");
 		digletSi = transform.FindChild ("diglett-si");
 
+		destino = GameObject.FindGameObjectWithTag ("notaMusical");
+
 		listadiglets.Add (digletDo);
 		listadiglets.Add (digletRe);
 		listadiglets.Add (digletMi);
@@ -25,24 +28,67 @@ public class DigletScript : MonoBehaviour {
 		listadiglets.Add (digletSol);
 		listadiglets.Add (digletLa);
 		listadiglets.Add (digletSi);
+			
 
 		Upall ();
 	}
 	
+
+	
 	// Update is called once per frame
 	void Update () {
 
-		if (Input.GetMouseButtonDown (0)) {
+		if (Input.GetMouseButton(0)) {
+
+			print ("aqui");
 			Vector2 pos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
 			Collider2D[] col = Physics2D.OverlapPointAll (pos);
 
 			if(col.Length > 0)
-				foreach (Collider2D c in col)
-					if (c.CompareTag("diglet")){
+				foreach (Collider2D c in col){
+					if (c.CompareTag("digletDo")){
 						Hitdiglet(c.transform);
+						destino.SendMessage("mudarEstadoDo");
+												
 					}
-		}
-	
+
+					if(c.CompareTag("digletRe")){
+						Hitdiglet(c.transform);
+						destino.SendMessage("mudarEstadoRe");
+				
+					}
+
+				if(c.CompareTag("digletMi")){
+					Hitdiglet(c.transform);
+					destino.SendMessage("mudarEstadoMi");
+					
+				}
+
+				if(c.CompareTag("digletFa")){
+					Hitdiglet(c.transform);
+					destino.SendMessage("mudarEstadoFa");
+					
+				}
+
+				if(c.CompareTag("digletSol")){
+					Hitdiglet(c.transform);
+					destino.SendMessage("mudarEstadoSol");
+					
+				}
+
+				if(c.CompareTag("digletLa")){
+					Hitdiglet(c.transform);
+					destino.SendMessage("mudarEstadoLa");
+					
+				}
+				if(c.CompareTag("digletSi")){
+					Hitdiglet(c.transform);
+					destino.SendMessage("mudarEstadoSi");
+					
+				}
+				}
+			}
+
 		//Codigo para multitoque. Esta comentado, pois so funciona no smartphone, no emulador do unity nao faz nada. 
 //
 //		Touch myTouch = Input.GetTouch(0);
@@ -59,7 +105,7 @@ public class DigletScript : MonoBehaviour {
 
 	void Upall() {
 		foreach (Transform i in listadiglets){
-			print (i);
+			print(i);
 			Updiglet (i);
 		}
 	}
@@ -69,7 +115,7 @@ public class DigletScript : MonoBehaviour {
 	}
 
 	void Hitdiglet(Transform b){
-		b.rigidbody2D.velocity = Vector3.down*10;
+		b.rigidbody2D.velocity = Vector3.down * 10;
 		b.audio.Play ();
 	}
 }
