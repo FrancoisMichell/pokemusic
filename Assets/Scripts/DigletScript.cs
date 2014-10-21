@@ -11,13 +11,13 @@ public class DigletScript : MonoBehaviour {
 		
 	// Use this for initialization
 	void Start () {		
-		digletDo = transform.FindChild ("diglett-do");
-		digletRe = transform.FindChild ("diglett-re");
-		digletMi = transform.FindChild ("diglett-mi");
-		digletFa = transform.FindChild ("diglett-fa");
-		digletSol = transform.FindChild ("diglett-sol");
-		digletLa = transform.FindChild ("diglett-la");
-		digletSi = transform.FindChild ("diglett-si");
+		digletDo = transform.FindChild ("diglettDo");
+		digletRe = transform.FindChild ("diglettRe");
+		digletMi = transform.FindChild ("diglettMi");
+		digletFa = transform.FindChild ("diglettFa");
+		digletSol = transform.FindChild ("diglettSol");
+		digletLa = transform.FindChild ("diglettLa");
+		digletSi = transform.FindChild ("diglettSi");
 
 		destino = GameObject.FindGameObjectWithTag ("notaMusical");
 
@@ -33,9 +33,7 @@ public class DigletScript : MonoBehaviour {
 		Upall ();
 		//Updiglet (listadiglets [Random.Range (0, 6)]);
 	}
-	
 
-	
 	// Update is called once per frame
 	void Update () {
 // codigo usado para visualização na unity
@@ -46,104 +44,27 @@ public class DigletScript : MonoBehaviour {
 
 			if(col.Length > 0)
 				foreach (Collider2D c in col){
-					/*if (c.CompareTag("digletDo")){
-						Hitdiglet(c.transform);
-						destino.SendMessage("mudarEstadoDo");
-												
-					}*/
+
 					Hitdiglet(c.transform);
 
-					if(c.CompareTag("digletRe")){
-						Hitdiglet(c.transform);
-						destino.SendMessage("mudarEstadoRe");
-				
-					}
-
-					else if(c.CompareTag("digletMi")){
-						Hitdiglet(c.transform);
-						destino.SendMessage("mudarEstadoMi");
-							
-					}
-
-					else if(c.CompareTag("digletFa")){
-						Hitdiglet(c.transform);
-						destino.SendMessage("mudarEstadoFa");
-						
-					}
-
-					else if(c.CompareTag("digletSol")){
-						Hitdiglet(c.transform);
-						destino.SendMessage("mudarEstadoSol");
-						
-					}
-
-					else if(c.CompareTag("digletLa")){
-						Hitdiglet(c.transform);
-						destino.SendMessage("mudarEstadoLa");
-						
-					}
-					else if(c.CompareTag("digletSi")){
-						Hitdiglet(c.transform);
-						destino.SendMessage("mudarEstadoSi");
-						
-					}	
 				}
 			}
 
-		//Codigo para multitoque. Esta comentado, pois so funciona no smartphone, no emulador do unity nao faz nada. 
+		//Codigo para multitoque. Esta comentado, pois so funciona no smartphone 
 
-		/*Touch myTouch = Input.GetTouch(0);
-		Vector2 pos = Camera.main.ScreenToWorldPoint(myTouch.position);
-		Collider2D[] myTouches = Physics2D.OverlapPointAll(pos);
-		if (myTouches.Length > 0){
-			foreach(Collider2D c in myTouches){
-				if (c.CompareTag("digletDo")){
-					Hitdiglet(c.transform);
-					destino.SendMessage("mudarEstadoDo");
-					
-				}
-				
-				else if(c.CompareTag("digletRe")){
-					Hitdiglet(c.transform);
-					destino.SendMessage("mudarEstadoRe");
-					
-				}
-				
-				else if(c.CompareTag("digletMi")){
-					Hitdiglet(c.transform);
-					destino.SendMessage("mudarEstadoMi");
-					
-				}
-				
-				else if(c.CompareTag("digletFa")){
-					Hitdiglet(c.transform);
-					destino.SendMessage("mudarEstadoFa");
-					
-				}
-				
-				else if(c.CompareTag("digletSol")){
-					Hitdiglet(c.transform);
-					destino.SendMessage("mudarEstadoSol");
-					
-				}
-				
-				else if(c.CompareTag("digletLa")){
-					Hitdiglet(c.transform);
-					destino.SendMessage("mudarEstadoLa");
-					
-				}
-				else if(c.CompareTag("digletSi")){
-					Hitdiglet(c.transform);
-					destino.SendMessage("mudarEstadoSi");
-					
-				}
-			}
-		}*/
+//		Touch myTouch = Input.GetTouch(0);
+//		Vector2 pos = Camera.main.ScreenToWorldPoint(myTouch.position);
+//		Collider2D[] myTouches = Physics2D.OverlapPointAll(pos);
+//		if (myTouches.Length > 0){
+//			foreach(Collider2D c in myTouches){
+//					Hitdiglet(c.transform);
+//
+//			}
+//		}
 	}
 
 	void Upall() {
 		foreach (Transform i in listadiglets){
-			print(i);
 			Updiglet (i);
 		}
 	}
@@ -156,7 +77,5 @@ public class DigletScript : MonoBehaviour {
 		b.audio.Play ();
 		b.rigidbody2D.velocity = Vector3.down * 10;
 		destino.SendMessage(b.name);
-
-
 	}
 }

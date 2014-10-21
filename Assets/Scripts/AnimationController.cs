@@ -19,27 +19,27 @@ public class AnimationController : MonoBehaviour {
 		notaMusical.SetTrigger("apertarDo");
 	}
 	
-	void mudarEstadoRe(){
+	void diglettRe(){
 		notaMusical.SetTrigger("apertarRe");
 	}
 
-	void mudarEstadoMi(){
+	void diglettMi(){
 		notaMusical.SetTrigger("apertarMi");
 	}
 	
-	void mudarEstadoFa(){
+	void diglettFa(){
 		notaMusical.SetTrigger("apertarFa");
 	}
 
-	void mudarEstadoSol(){
+	void diglettSol(){
 		notaMusical.SetTrigger("apertarSol");
 	}
 	
-	void mudarEstadoLa(){
+	void diglettLa(){
 		notaMusical.SetTrigger("apertarLa");
 	}
 
-	void mudarEstadoSi(){
+	void diglettSi(){
 		notaMusical.SetTrigger("apertarSi");
 	}
 }
