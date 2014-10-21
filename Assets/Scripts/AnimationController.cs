@@ -15,7 +15,7 @@ public class AnimationController : MonoBehaviour {
 	
 	}
 
-	void mudarEstadoDo(){
+	void diglettDo(){
 		notaMusical.SetTrigger("apertarDo");
 	}
 	

@@ -12,10 +12,8 @@ public class SceneTransition : MonoBehaviour {
 	void Update () {
 		
 		if (Input.GetMouseButtonDown (0)) {
-			
 			Application.LoadLevel("Infinity");
-			
-		}
-		
+	
+		}	
 	}
 }

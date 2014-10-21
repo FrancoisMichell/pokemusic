@@ -31,28 +31,29 @@ public class DigletScript : MonoBehaviour {
 			
 
 		Upall ();
+		//Updiglet (listadiglets [Random.Range (0, 6)]);
 	}
 	
 
 	
 	// Update is called once per frame
 	void Update () {
-
+// codigo usado para visualização na unity
 		if (Input.GetMouseButton(0)) {
 
-			print ("aqui");
 			Vector2 pos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
 			Collider2D[] col = Physics2D.OverlapPointAll (pos);
 
 			if(col.Length > 0)
 				foreach (Collider2D c in col){
-					if (c.CompareTag("digletDo")){
+					/*if (c.CompareTag("digletDo")){
 						Hitdiglet(c.transform);
 						destino.SendMessage("mudarEstadoDo");
 												
-					}
+					}*/
+					Hitdiglet(c.transform);
 
-					else if(c.CompareTag("digletRe")){
+					if(c.CompareTag("digletRe")){
 						Hitdiglet(c.transform);
 						destino.SendMessage("mudarEstadoRe");
 				
@@ -90,17 +91,54 @@ public class DigletScript : MonoBehaviour {
 			}
 
 		//Codigo para multitoque. Esta comentado, pois so funciona no smartphone, no emulador do unity nao faz nada. 
-//
-//		Touch myTouch = Input.GetTouch(0);
-//		Vector2 pos = Camera.main.ScreenToWorldPoint(myTouch.position);
-//		Collider2D[] myTouches = Physics2D.OverlapPointAll(pos);
-//		if (myTouches.Length > 0){
-//			foreach(Collider2D c in myTouches){
-//				if(c.CompareTag("diglet")){
-//					Hitdiglet(c.transform);
-//				}
-//			}
-//		}
+
+		/*Touch myTouch = Input.GetTouch(0);
+		Vector2 pos = Camera.main.ScreenToWorldPoint(myTouch.position);
+		Collider2D[] myTouches = Physics2D.OverlapPointAll(pos);
+		if (myTouches.Length > 0){
+			foreach(Collider2D c in myTouches){
+				if (c.CompareTag("digletDo")){
+					Hitdiglet(c.transform);
+					destino.SendMessage("mudarEstadoDo");
+					
+				}
+				
+				else if(c.CompareTag("digletRe")){
+					Hitdiglet(c.transform);
+					destino.SendMessage("mudarEstadoRe");
+					
+				}
+				
+				else if(c.CompareTag("digletMi")){
+					Hitdiglet(c.transform);
+					destino.SendMessage("mudarEstadoMi");
+					
+				}
+				
+				else if(c.CompareTag("digletFa")){
+					Hitdiglet(c.transform);
+					destino.SendMessage("mudarEstadoFa");
+					
+				}
+				
+				else if(c.CompareTag("digletSol")){
+					Hitdiglet(c.transform);
+					destino.SendMessage("mudarEstadoSol");
+					
+				}
+				
+				else if(c.CompareTag("digletLa")){
+					Hitdiglet(c.transform);
+					destino.SendMessage("mudarEstadoLa");
+					
+				}
+				else if(c.CompareTag("digletSi")){
+					Hitdiglet(c.transform);
+					destino.SendMessage("mudarEstadoSi");
+					
+				}
+			}
+		}*/
 	}
 
 	void Upall() {
@@ -115,7 +153,10 @@ public class DigletScript : MonoBehaviour {
 	}
 
 	void Hitdiglet(Transform b){
-		b.rigidbody2D.velocity = Vector3.down * 10;
 		b.audio.Play ();
+		b.rigidbody2D.velocity = Vector3.down * 10;
+		destino.SendMessage(b.name);
+
+
 	}
 }
