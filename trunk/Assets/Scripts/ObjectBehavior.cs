@@ -5,11 +5,13 @@ public class ObjectBehavior : MonoBehaviour {
 	public float speed;
 	public GameObject meteoro;
 	private bool _isGameOver;
+	private AudioSource audioNota;
 
 
 	// Use this for initialization
 	void Start () {
 		_isGameOver = false;
+		audioNota = GetComponent<AudioSource>();
 	
 	}
 	
@@ -21,6 +23,8 @@ public class ObjectBehavior : MonoBehaviour {
 		if (transform.position.x < -10f) {
 			meteoro.SetActive(false);
 
+		
+
 	
 	}
 	}
@@ -29,4 +33,12 @@ public class ObjectBehavior : MonoBehaviour {
 	{
 		_isGameOver = true;
 	}
+	void OnTriggerEnter2D(Collider2D c)
+	{
+		if (c.CompareTag("BarraSom"))
+		{
+			audioNota.Play();
+		}
+
+}
 }
