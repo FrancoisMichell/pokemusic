@@ -38,9 +38,8 @@ public class DigletScript : MonoBehaviour {
 	void Update () {
 // codigo usado para visualização na unity
 		if (Input.GetMouseButton(0)) {
-
 			Vector2 pos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
-			Collider2D[] col = Physics2D.OverlapPointAll (pos);
+			Collider2D[] col = Physics2D.OverlapPointAll (pos);		
 
 			if(col.Length > 0)
 				foreach (Collider2D c in col){
