@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
 public class ObjectBehavior : MonoBehaviour {
 	public float speed;
 	public GameObject meteoro;
@@ -19,9 +20,10 @@ public class ObjectBehavior : MonoBehaviour {
 	void FixedUpdate () {
 
 		if (_isGameOver) return;
-		transform.position += new Vector3 (speed, 0, 0) * Time.deltaTime;
+			transform.position += new Vector3 (speed, 0, 0) * Time.deltaTime;
 		if (transform.position.x < -10f) {
 			meteoro.SetActive(false);
+			//Comentando essa linha os objetos passam a nao serem mais criados
 
 		
 
@@ -38,6 +40,9 @@ public class ObjectBehavior : MonoBehaviour {
 		if (c.CompareTag("BarraSom"))
 		{
 			audioNota.Play();
+			print(meteoro.name);
+
+
 		}
 
 }

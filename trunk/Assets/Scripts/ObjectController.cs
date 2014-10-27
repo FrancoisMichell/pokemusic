@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -13,7 +13,8 @@ public class ObjectController : MonoBehaviour {
 
 	public GameObject nuvemDo, nuvemRe, nuvemMi, nuvemFa, nuvemSol, nuvemLa, nuvemSi;
 
-	private bool _isGameOver;
+	public bool _isGameOver, _isPlaying;
+
 
 	public List<GameObject> nuvem;
 
@@ -22,10 +23,14 @@ public class ObjectController : MonoBehaviour {
 
 	private GameObject nuvemSeguinte;
 
+
+
 	
 	// Use this for initialization
 	void Start () {
 
+				
+				
 				for (int i=0; i<maxNuvem; i++) {
 						numero = Random.Range (0, 7);
 						ordem.Add (numero);
@@ -63,15 +68,18 @@ public class ObjectController : MonoBehaviour {
 		}
 	// Update is called once per frame
 	void Update () {
+		// aqui faz a comparaçao e identificax que o ultimo objeto foi lancado
+		if (nuvem [nuvem.Count - 1].activeSelf == true) {
+			print(nuvem[nuvem.Count-1].name);
+			finishPlay();
+		}
 
+			
 
 
 		currentRateSpawn += Time.deltaTime;
-		if (currentRateSpawn > rateSpawn) {
-						if (_isGameOver) return;
-						currentRateSpawn = 0;
-						Spawn();
-				}
+		LancarNuvem ();
+
 	
 	}
 	private void Spawn() {
@@ -84,18 +92,34 @@ public class ObjectController : MonoBehaviour {
 				break;
 			}
 		}
-			if (nuvemAtual != null) {
-			nuvemAtual.transform.position = new Vector3(transform.position.x, randPosition, transform.position.y);
+			if (nuvemAtual != null && _isPlaying == true) {
+				nuvemAtual.transform.position = new Vector3(transform.position.x, randPosition, transform.position.y);
 				nuvemAtual.SetActive(true);
 
 
 
 			}
 	}
-
-
-	void GameEnd()
-	{
-		_isGameOver = true;
+	//metodo responsavel por fazer as nuvens serem lançadas espaçadas.
+	public void LancarNuvem(){
+		if (currentRateSpawn > rateSpawn) {
+			if (_isGameOver) return;
+				currentRateSpawn = 0;
+				Spawn();
+			
+			
+		}
 	}
+
+	public bool startPlay(){
+		_isPlaying = true;
+
+		}
+	public bool finishPlay(){
+		_isPlaying = false;
+	}
+	public bool getPlaying(){
+		return _isPlaying
+	}
+
 }

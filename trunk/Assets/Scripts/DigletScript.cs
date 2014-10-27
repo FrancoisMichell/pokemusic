@@ -30,7 +30,7 @@ public class DigletScript : MonoBehaviour {
 		listadiglets.Add (digletSi);
 			
 
-		Upall ();
+		//Upall ();
 		//Updiglet (listadiglets [Random.Range (0, 6)]);
 	}
 

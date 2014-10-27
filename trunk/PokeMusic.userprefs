@@ -1,9 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\SkyDrive\Documentos\Projetos Unity\Assets\Scripts\PlayerController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ObjectController.cs">
     <Files>
-      <File FileName="Assets\Scripts\ObjectBehavior.cs" Line="37" Column="3" />
-      <File FileName="..\..\SkyDrive\Documentos\Projetos Unity\Assets\Scripts\PlayerController.cs" Line="59" Column="1" />
+      <File FileName="Assets\Scripts\ObjectController.cs" Line="16" Column="13" />
+      <File FileName="Assets\Scripts\ObjectBehavior.cs" Line="42" Column="24" />
+      <File FileName="Assets\Scripts\DigletScript.cs" Line="10" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
