@@ -8,6 +8,7 @@ public class DigletScript : MonoBehaviour {
 	private List<Transform> listadiglets = new List<Transform>();
 	private GameObject destino;
 
+
 		
 	// Use this for initialization
 	void Start () {		
@@ -20,6 +21,8 @@ public class DigletScript : MonoBehaviour {
 		digletSi = transform.FindChild ("diglettSi");
 
 		destino = GameObject.FindGameObjectWithTag ("notaMusical");
+
+
 
 		listadiglets.Add (digletDo);
 		listadiglets.Add (digletRe);
@@ -62,7 +65,7 @@ public class DigletScript : MonoBehaviour {
 //		}
 	}
 
-	void Upall() {
+	public void Upall() {
 		foreach (Transform i in listadiglets){
 			Updiglet (i);
 		}
