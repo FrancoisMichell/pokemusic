@@ -29,7 +29,8 @@ public class ObjectController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-				
+
+		this.startPlay ();
 				
 				for (int i=0; i<maxNuvem; i++) {
 						numero = Random.Range (0, 7);
@@ -69,9 +70,10 @@ public class ObjectController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		// aqui faz a comparaçao e identificax que o ultimo objeto foi lancado
+		//metodo finish play faz com que a sequencia nao se repita
 		if (nuvem [nuvem.Count - 1].activeSelf == true) {
 			print(nuvem[nuvem.Count-1].name);
-			finishPlay();
+			this.finishPlay();
 		}
 
 			
@@ -111,15 +113,15 @@ public class ObjectController : MonoBehaviour {
 		}
 	}
 
-	public bool startPlay(){
+	public void startPlay(){
 		_isPlaying = true;
 
 		}
-	public bool finishPlay(){
+	public void finishPlay(){
 		_isPlaying = false;
 	}
 	public bool getPlaying(){
-		return _isPlaying
+		return _isPlaying;
 	}
 
 }
