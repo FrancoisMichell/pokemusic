@@ -15,13 +15,15 @@ public class ObjectController : MonoBehaviour {
 
 	public bool _isGameOver, _isPlaying;
 
-
 	public List<GameObject> nuvem;
 
 	private List<int> ordem = new List<int>();
+
 	private int numero;
 
 	private GameObject nuvemSeguinte;
+
+	private GameObject digglets;
 
 
 
@@ -29,7 +31,7 @@ public class ObjectController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-
+		digglets = GameObject.FindGameObjectWithTag ("digglets");
 		this.startPlay ();
 				
 				for (int i=0; i<maxNuvem; i++) {
@@ -65,25 +67,26 @@ public class ObjectController : MonoBehaviour {
 						GameObject nuvemAtual = Instantiate (nuvemSeguinte) as GameObject;
 						nuvem.Add (nuvemAtual);
 						nuvemAtual.SetActive (false);
+						
 				}
 		}
 	// Update is called once per frame
 	void Update () {
-		// aqui faz a comparaçao e identificax que o ultimo objeto foi lancado
+		// aqui faz a comparaçao e identifica que o ultimo objeto foi lancado
 		//metodo finish play faz com que a sequencia nao se repita
 		if (nuvem [nuvem.Count - 1].activeSelf == true) {
 			print(nuvem[nuvem.Count-1].name);
+//			finishPlay();
 			this.finishPlay();
 		}
-
-			
-
 
 		currentRateSpawn += Time.deltaTime;
 		LancarNuvem ();
 
+
+		}
 	
-	}
+//	}
 	private void Spawn() {
 
 		float randPosition = Random.Range (AlturaMax, AlturaMin);
@@ -113,15 +116,23 @@ public class ObjectController : MonoBehaviour {
 		}
 	}
 
+
+
 	public void startPlay(){
 		_isPlaying = true;
 
 		}
 	public void finishPlay(){
 		_isPlaying = false;
+		Invoke ("enviaMensagem", 7);
 	}
+
 	public bool getPlaying(){
 		return _isPlaying;
 	}
 
+	public void enviaMensagem(){
+		digglets.SendMessage ("Upall");
+
+	}
 }
