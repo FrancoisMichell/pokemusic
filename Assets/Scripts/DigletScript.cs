@@ -33,8 +33,8 @@ public class DigletScript : MonoBehaviour {
 		listadiglets.Add (digletSi);
 			
 
-		//Upall ();
-		//Updiglet (listadiglets [Random.Range (0, 6)]);
+//		Upall ();
+//		Updiglet (listadiglets [Random.Range (0, 6)]);
 	}
 
 	// Update is called once per frame
