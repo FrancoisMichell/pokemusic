@@ -21,8 +21,7 @@ public class DigletScript : MonoBehaviour {
 		digletLa = transform.FindChild ("diglettLa");
 		digletSi = transform.FindChild ("diglettSi");
 
-		destino = GameObject.FindGameObjectWithTag ("notaMusical");
-
+		destino = GameObject.FindGameObjectWithTag ("nuvem");
 
 
 		listadiglets.Add (digletDo);

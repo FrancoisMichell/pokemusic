@@ -8,6 +8,8 @@ public class AnimationController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		notaMusical = GetComponent<Animator> ();
+		this.diglettRe ();
+
 	}
 	
 	// Update is called once per frame
@@ -15,6 +17,10 @@ public class AnimationController : MonoBehaviour {
 	
 	}
 
+	void diglettLa(){
+		notaMusical.SetTrigger("apertarLa");
+	}
+	
 	void diglettDo(){
 		notaMusical.SetTrigger("apertarDo");
 	}
@@ -33,10 +39,6 @@ public class AnimationController : MonoBehaviour {
 
 	void diglettSol(){
 		notaMusical.SetTrigger("apertarSol");
-	}
-	
-	void diglettLa(){
-		notaMusical.SetTrigger("apertarLa");
 	}
 
 	void diglettSi(){
