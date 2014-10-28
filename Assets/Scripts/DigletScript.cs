@@ -7,6 +7,7 @@ public class DigletScript : MonoBehaviour {
 	private Transform digletDo, digletRe, digletMi, digletFa, digletSol, digletLa, digletSi;
 	private List<Transform> listadiglets = new List<Transform>();
 	private GameObject destino;
+	private bool touch;
 
 
 		
@@ -40,7 +41,7 @@ public class DigletScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 // codigo usado para visualização na unity
-		if (Input.GetMouseButton(0)) {
+		if (Input.GetMouseButton(0) && touch == true) {
 			Vector2 pos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
 			Collider2D[] col = Physics2D.OverlapPointAll (pos);		
 
@@ -57,7 +58,7 @@ public class DigletScript : MonoBehaviour {
 //		Touch myTouch = Input.GetTouch(0);
 //		Vector2 pos = Camera.main.ScreenToWorldPoint(myTouch.position);
 //		Collider2D[] myTouches = Physics2D.OverlapPointAll(pos);
-//		if (myTouches.Length > 0){
+//		if (myTouches.Length > 0 && touch == true){
 //			foreach(Collider2D c in myTouches){
 //					Hitdiglet(c.transform);
 //
@@ -68,6 +69,7 @@ public class DigletScript : MonoBehaviour {
 	public void Upall() {
 		foreach (Transform i in listadiglets){
 			Updiglet (i);
+			touch = true;
 		}
 	}
 
@@ -78,6 +80,13 @@ public class DigletScript : MonoBehaviour {
 	void Hitdiglet(Transform b){
 		b.audio.Play ();
 		b.rigidbody2D.velocity = Vector3.down * 10;
-		destino.SendMessage(b.name);
+		//destino.SendMessage(b.name);
+	}
+
+	public void downDigglets(){
+		foreach (Transform i in listadiglets) {
+			i.rigidbody2D.gravityScale = 5;
+			touch = false;
+		}
 	}
 }

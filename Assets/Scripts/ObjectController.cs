@@ -75,8 +75,7 @@ public class ObjectController : MonoBehaviour {
 		// aqui faz a comparaçao e identifica que o ultimo objeto foi lancado
 		//metodo finish play faz com que a sequencia nao se repita
 		if (nuvem [nuvem.Count - 1].activeSelf == true) {
-			print(nuvem[nuvem.Count-1].name);
-//			finishPlay();
+			//			finishPlay();
 			this.finishPlay();
 		}
 
@@ -133,6 +132,7 @@ public class ObjectController : MonoBehaviour {
 
 	public void enviaMensagem(){
 		digglets.SendMessage ("Upall");
+
 
 	}
 }
