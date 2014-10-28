@@ -1,13 +1,15 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ObjectController.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlayScript.cs">
     <Files>
+      <File FileName="PokeMusic.sln" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\ObjectController.cs" Line="135" Column="3" />
       <File FileName="Assets\Scripts\ObjectBehavior.cs" Line="57" Column="4" />
-      <File FileName="Assets\Scripts\AnimationController.cs" Line="8" Column="20" />
+      <File FileName="Assets\Scripts\AnimationController.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\GameManager.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\BackgroundManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\DigletScript.cs" Line="44" Column="29" />
-      <File FileName="Assets\Scripts\ObjectController.cs" Line="127" Column="29" />
+      <File FileName="Assets\Scripts\DigletScript.cs" Line="81" Column="1" />
+      <File FileName="Assets\Scripts\PlayScript.cs" Line="29" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
