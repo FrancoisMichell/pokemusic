@@ -19,11 +19,13 @@ public class SceneTransition : MonoBehaviour {
 			Collider2D[] sprites = Physics2D.OverlapPointAll(vetor);
 			
 			if(sprites.Length > 0){
-				foreach(Collider2D sprite in sprites){
-					cam.SendMessage(sprite.tag);  	
-				}
-			}
+				foreach(Collider2D sprite in sprites)
+					cam.SendMessage(sprite.tag);
+				
+			
 		}
+		
+			if()
 	}
 
 }
