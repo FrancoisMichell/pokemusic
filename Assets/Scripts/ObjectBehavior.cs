@@ -34,10 +34,10 @@ public class ObjectBehavior : MonoBehaviour {
 			//Comentando essa linha os objetos passam a nao serem mais criados
 		
 	}
-//		if (controle == currentSpeed){
-//			digglets.SendMessage("Upall");
-// 
-//		}
+		if (controle == currentSpeed){
+			digglets.SendMessage("Upall");
+ 
+		}
 	}
 
 	void GameEnd()

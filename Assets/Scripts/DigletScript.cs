@@ -33,7 +33,7 @@ public class DigletScript : MonoBehaviour {
 		listadiglets.Add (digletSi);
 			
 
-//		Upall ();
+		Upall ();
 //		Updiglet (listadiglets [Random.Range (0, 6)]);
 	}
 
@@ -68,7 +68,7 @@ public class DigletScript : MonoBehaviour {
 	public void Upall() {
 		foreach (Transform i in listadiglets){
 			Updiglet (i);
-			touch = true;
+		touch = true;
 		}
 	}
 
@@ -79,13 +79,13 @@ public class DigletScript : MonoBehaviour {
 	void Hitdiglet(Transform b){
 		b.audio.Play ();
 		b.rigidbody2D.velocity = Vector3.down * 10;
-		//destino.SendMessage(b.name);
+		destino.SendMessage(b.name);
 	}
 
 	public void downDigglets(){
 		foreach (Transform i in listadiglets) {
 			i.rigidbody2D.gravityScale = 5;
-			touch = false;
+		touch = false;
 		}
 	}
 }
