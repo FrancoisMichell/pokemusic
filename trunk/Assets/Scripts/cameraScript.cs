@@ -20,22 +20,37 @@ public class cameraScript : MonoBehaviour {
 
 	void paraMenuDois(){
 
-		proximaTela.SetTrigger ("subir");
-		proximaTela.SetTrigger ("paraMenu2");
+		proximaTela.SetTrigger ("Menu1_Menu2");
 
 	}
 
 	void paraMenuUm(){
 
-		proximaTela.SetTrigger ("indoEsquerda");
-		proximaTela.SetTrigger ("paraMenu1");
+		proximaTela.SetTrigger ("Menu2_Menu1");
+		
+	}
+
+	void lojaMenuUm(){
+		
+		proximaTela.SetTrigger ("Loja_Menu1");
+		
+	}
+
+	void aboutMenuUm(){
+		
+		proximaTela.SetTrigger ("About_Menu1");
 		
 	}
 
 	void paraLoja(){
 
-		proximaTela.SetTrigger ("indoDireita");
-		proximaTela.SetTrigger ("paraLoja");
+		proximaTela.SetTrigger ("Menu1_Loja");
+		
+	}
+
+	void paraAbout(){
+		
+		proximaTela.SetTrigger ("Menu1_About");
 		
 	}
 

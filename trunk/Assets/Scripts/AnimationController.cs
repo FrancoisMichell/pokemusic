@@ -8,7 +8,6 @@ public class AnimationController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		notaMusical = GetComponent<Animator> ();
-		this.diglettRe ();
 
 	}
 	

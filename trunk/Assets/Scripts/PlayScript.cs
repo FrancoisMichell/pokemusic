@@ -20,7 +20,7 @@ public class PlayScript : MonoBehaviour {
 			
 			if(sprites.Length > 0){
 				foreach(Collider2D sprite in sprites){
-					if (sprite.CompareTag("play")){
+					if (sprite.CompareTag("freemode")){
 						Application.LoadLevel("Infinity");  	
 					}
 				}
