@@ -4,11 +4,12 @@ using System.Collections;
 public class SceneTransition : MonoBehaviour {
 
 	private GameObject cam;
-
+	private string atual;
 	// Use this for initialization
 	void Start () {
 
 		cam = GameObject.FindGameObjectWithTag("MainCamera");
+
 	}
 	
 	// Update is called once per frame
@@ -20,10 +21,31 @@ public class SceneTransition : MonoBehaviour {
 			
 			if(sprites.Length > 0){
 				foreach(Collider2D sprite in sprites){
-					print (sprite.tag);
+					atual = sprite.tag;
 					cam.SendMessage(sprite.tag);
 				}
 			}
+		}
+		if (Input.GetKeyDown (KeyCode.Escape)) {
+			switch(atual){
+				case "paraLoja":
+					cam.SendMessage("lojaMenuUm");
+					break;
+				case "paraMenuDois":
+					cam.SendMessage("paraMenuUm");
+					break;
+				case "paraAbout":
+					cam.SendMessage("aboutMenuUm");
+					break;
+
+
+			}
+
+
+
+//			if (atual == "paraLoja"){
+//				cam.SendMessage("lojaMenuUm");
+//			}
 		}
 	}
 
