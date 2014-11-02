@@ -40,7 +40,7 @@ public class DigletScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 // codigo usado para visualização na unity
-		if (Input.GetMouseButton(0) && touch == true) {
+		/*if (Input.GetMouseButton(0) && touch == true) {
 			Vector2 pos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
 			Collider2D[] col = Physics2D.OverlapPointAll (pos);		
 
@@ -50,19 +50,19 @@ public class DigletScript : MonoBehaviour {
 					Hitdiglet(c.transform);
 
 				}
-			}
+			}*/
 
 		//Codigo para multitoque. Esta comentado, pois so funciona no smartphone 
 
-//		Touch myTouch = Input.GetTouch(0);
-//		Vector2 pos = Camera.main.ScreenToWorldPoint(myTouch.position);
-//		Collider2D[] myTouches = Physics2D.OverlapPointAll(pos);
-//		if (myTouches.Length > 0 && touch == true){
-//			foreach(Collider2D c in myTouches){
-//					Hitdiglet(c.transform);
-//
-//			}
-//		}
+		Touch myTouch = Input.GetTouch(0);
+		Vector2 pos = Camera.main.ScreenToWorldPoint(myTouch.position);
+		Collider2D[] myTouches = Physics2D.OverlapPointAll(pos);
+		if (myTouches.Length > 0 && touch == true){
+			foreach(Collider2D c in myTouches){
+					Hitdiglet(c.transform);
+
+			}
+		}
 	}
 
 	public void Upall() {
