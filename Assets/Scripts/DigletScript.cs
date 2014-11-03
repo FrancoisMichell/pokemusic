@@ -6,7 +6,13 @@ public class DigletScript : MonoBehaviour {
 
 	private Transform digletDo, digletRe, digletMi, digletFa, digletSol, digletLa, digletSi;
 	private List<Transform> listadiglets = new List<Transform>();
-	private GameObject destino;
+	private GameObject destinoDo;
+	private GameObject destinoRe;
+	private GameObject destinoMi;
+	private GameObject destinoFa;
+	private GameObject destinoSol;
+	private GameObject destinoLa;
+	private GameObject destinoSi;
 	private bool touch;
 
 
@@ -21,7 +27,13 @@ public class DigletScript : MonoBehaviour {
 		digletLa = transform.FindChild ("diglettLa");
 		digletSi = transform.FindChild ("diglettSi");
 
-		destino = GameObject.FindGameObjectWithTag ("nuvem");
+		destinoDo = GameObject.FindGameObjectWithTag ("nuvemDo");
+		destinoRe = GameObject.FindGameObjectWithTag ("nuvemRe");
+		destinoMi = GameObject.FindGameObjectWithTag ("nuvemMi");
+		destinoFa = GameObject.FindGameObjectWithTag ("nuvemFa");
+		destinoSol = GameObject.FindGameObjectWithTag ("nuvemSol");
+		destinoLa = GameObject.FindGameObjectWithTag ("nuvemLa");
+		destinoSi = GameObject.FindGameObjectWithTag ("nuvemSi");
 
 
 		listadiglets.Add (digletDo);
@@ -40,7 +52,7 @@ public class DigletScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 // codigo usado para visualização na unity
-		/*if (Input.GetMouseButton(0) && touch == true) {
+		if (Input.GetMouseButton(0) && touch == true) {
 			Vector2 pos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
 			Collider2D[] col = Physics2D.OverlapPointAll (pos);		
 
@@ -50,19 +62,19 @@ public class DigletScript : MonoBehaviour {
 					Hitdiglet(c.transform);
 
 				}
-			}*/
+			}
 
 		//Codigo para multitoque. Esta comentado, pois so funciona no smartphone 
 
-		Touch myTouch = Input.GetTouch(0);
-		Vector2 pos = Camera.main.ScreenToWorldPoint(myTouch.position);
-		Collider2D[] myTouches = Physics2D.OverlapPointAll(pos);
-		if (myTouches.Length > 0 && touch == true){
-			foreach(Collider2D c in myTouches){
-					Hitdiglet(c.transform);
-
-			}
-		}
+//		Touch myTouch = Input.GetTouch(0);
+//		Vector2 pos = Camera.main.ScreenToWorldPoint(myTouch.position);
+//		Collider2D[] myTouches = Physics2D.OverlapPointAll(pos);
+//		if (myTouches.Length > 0 && touch == true){
+//			foreach(Collider2D c in myTouches){
+//					Hitdiglet(c.transform);
+//
+//			}
+//		}
 	}
 
 	public void Upall() {
@@ -79,7 +91,31 @@ public class DigletScript : MonoBehaviour {
 	void Hitdiglet(Transform b){
 		b.audio.Play ();
 		b.rigidbody2D.velocity = Vector3.down * 10;
-		destino.SendMessage(b.name);
+
+		switch (b.name) {
+		case "diglettDo":
+				destinoDo.SendMessage (b.name);	
+				break;
+		case "diglettRe":
+			destinoRe.SendMessage (b.name);	
+				break;
+		case "diglettMi":
+			destinoMi.SendMessage (b.name);	
+				break;
+		case "diglettFa":
+			destinoFa.SendMessage (b.name);	
+				break;
+		case "diglettSol":
+			destinoSol.SendMessage (b.name);	
+				break;
+		case "diglettLa":
+			destinoLa.SendMessage (b.name);	
+				break;
+		case "diglettSi":
+			destinoSi.SendMessage (b.name);	
+				break;
+
+		}
 	}
 
 	public void downDigglets(){
@@ -88,4 +124,5 @@ public class DigletScript : MonoBehaviour {
 		touch = false;
 		}
 	}
+
 }
