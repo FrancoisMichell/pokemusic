@@ -23,6 +23,9 @@ public class PlayScript : MonoBehaviour {
 					if (sprite.CompareTag("freemode")){
 						Application.LoadLevel("Infinity");  	
 					}
+					if (sprite.CompareTag("Genious")){
+						Application.LoadLevel("EmConstrucao");  	
+					}
 				}
 			}
 		}

@@ -5,6 +5,7 @@ public class SceneTransition : MonoBehaviour {
 
 	private GameObject cam;
 	private string atual;
+	private bool touch;
 	// Use this for initialization
 	void Start () {
 
@@ -26,6 +27,17 @@ public class SceneTransition : MonoBehaviour {
 				}
 			}
 		}
+//
+//		Touch myTouch = Input.GetTouch(0);
+//		Vector2 pos = Camera.main.ScreenToWorldPoint(myTouch.position);
+//		Collider2D[] sprites = Physics2D.OverlapPointAll(pos);
+//		if (sprites.Length > 0){
+//			foreach(Collider2D sprite in sprites){
+//				atual = sprite.tag;
+//				cam.SendMessage(sprite.tag);
+//			}
+//		}
+
 		if (Input.GetKeyDown (KeyCode.Escape)) {
 			switch(atual){
 				case "paraLoja":
