@@ -1,27 +1,15 @@
 ﻿<Properties>
-<<<<<<< .mine
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GameManager.cs">
-=======
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\AnimationController.cs">
->>>>>>> .r32
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ScriptsNotas\notaSi.cs">
     <Files>
-<<<<<<< .mine
-      <File FileName="Assets\Scripts\GameManager.cs" Line="14" Column="34" />
-=======
-      <File FileName="Assets\Scripts\DigletScript.cs" Line="82" Column="31" />
->>>>>>> .r32
-      <File FileName="Assets\Scripts\ObjectController.cs" Line="1" Column="1" />
-<<<<<<< .mine
-      <File FileName="Assets\Scripts\SceneTransition.cs" Line="34" Column="25" />
-      <File FileName="Assets\Scripts\DigletScript.cs" Line="10" Column="21" />
-      <File FileName="Assets\Scripts\PlayScript.cs" Line="27" Column="42" />
-=======
-      <File FileName="Assets\Scripts\SceneTransition.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\cameraScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\AnimationController.cs" Line="1" Column="1" />
->>>>>>> .r32
+      <File FileName="Assets\Scripts\ScriptsNotas\notaDo.cs" Line="5" Column="1" />
+      <File FileName="Assets\Scripts\ScriptsNotas\notaFa.cs" Line="5" Column="1" />
+      <File FileName="Assets\Scripts\ScriptsNotas\notaLa.cs" Line="15" Column="16" />
+      <File FileName="Assets\Scripts\ScriptsNotas\notaMi.cs" Line="15" Column="16" />
+      <File FileName="Assets\Scripts\ScriptsNotas\notaRe.cs" Line="16" Column="16" />
+      <File FileName="Assets\Scripts\ScriptsNotas\notaSol.cs" Line="15" Column="17" />
+      <File FileName="Assets\Scripts\DigletScript.cs" Line="49" Column="51" />
+      <File FileName="Assets\Scripts\ScriptsNotas\notaSi.cs" Line="16" Column="36" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -55,6 +55,13 @@
      <Compile Include="Assets\Scripts\ObjectController.cs" />
      <Compile Include="Assets\Scripts\PlayScript.cs" />
      <Compile Include="Assets\Scripts\SceneTransition.cs" />
+     <Compile Include="Assets\Scripts\ScriptsNotas\notaDo.cs" />
+     <Compile Include="Assets\Scripts\ScriptsNotas\notaFa.cs" />
+     <Compile Include="Assets\Scripts\ScriptsNotas\notaLa.cs" />
+     <Compile Include="Assets\Scripts\ScriptsNotas\notaMi.cs" />
+     <Compile Include="Assets\Scripts\ScriptsNotas\notaRe.cs" />
+     <Compile Include="Assets\Scripts\ScriptsNotas\notaSi.cs" />
+     <Compile Include="Assets\Scripts\ScriptsNotas\notaSol.cs" />
      <Compile Include="Assets\Scripts\cameraScript.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

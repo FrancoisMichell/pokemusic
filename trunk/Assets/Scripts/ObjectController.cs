@@ -65,7 +65,7 @@ public class ObjectController : MonoBehaviour {
 								break;
 						}
 						GameObject nuvemAtual = Instantiate (nuvemSeguinte) as GameObject;
-						nuvem.Add (nuvemAtual);
+					nuvem.Add (nuvemAtual);
 						nuvemAtual.SetActive (false);
 						
 				}
