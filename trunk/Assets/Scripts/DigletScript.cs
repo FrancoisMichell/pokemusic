@@ -44,8 +44,6 @@ public class DigletScript : MonoBehaviour {
 		listadiglets.Add (digletLa);
 		listadiglets.Add (digletSi);
 			
-
-		Upall ();
 //		Updiglet (listadiglets [Random.Range (0, 6)]);
 	}
 
