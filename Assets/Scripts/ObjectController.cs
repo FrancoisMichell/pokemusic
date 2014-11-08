@@ -25,12 +25,15 @@ public class ObjectController : MonoBehaviour {
 
 	private GameObject digglets;
 
+	private GameObject pitch;
+
 
 
 	
 	// Use this for initialization
 	void Start () {
 
+		pitch = GameObject.FindGameObjectWithTag ("pitch");
 		digglets = GameObject.FindGameObjectWithTag ("digglets");
 		this.startPlay ();
 				
@@ -123,7 +126,7 @@ public class ObjectController : MonoBehaviour {
 		}
 	public void finishPlay(){
 		_isPlaying = false;
-		Invoke ("enviaMensagem", 7);
+		Invoke ("enviaMensagem",7);
 	}
 
 	public bool getPlaying(){
