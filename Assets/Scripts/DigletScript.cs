@@ -13,9 +13,12 @@ public class DigletScript : MonoBehaviour {
 	private GameObject destinoSol;
 	private GameObject destinoLa;
 	private GameObject destinoSi;
+	private List<string> sequencia = new List<string> ();
 	private bool touch;
-
-
+	private int posicaoSequencia = 0;
+	private GameObject objectController;
+	public GameObject barraStatus1;
+	public GameObject barraStatus2;
 		
 	// Use this for initialization
 	void Start () {		
@@ -27,13 +30,15 @@ public class DigletScript : MonoBehaviour {
 		digletLa = transform.FindChild ("diglettLa");
 		digletSi = transform.FindChild ("diglettSi");
 
-		destinoDo = GameObject.FindGameObjectWithTag ("nuvemDo");
-		destinoRe = GameObject.FindGameObjectWithTag ("nuvemRe");
-		destinoMi = GameObject.FindGameObjectWithTag ("nuvemMi");
-		destinoFa = GameObject.FindGameObjectWithTag ("nuvemFa");
-		destinoSol = GameObject.FindGameObjectWithTag ("nuvemSol");
-		destinoLa = GameObject.FindGameObjectWithTag ("nuvemLa");
-		destinoSi = GameObject.FindGameObjectWithTag ("nuvemSi");
+		objectController = GameObject.FindGameObjectWithTag ("Launcher");
+
+//		destinoDo = GameObject.FindGameObjectWithTag ("nuvemDo");
+//		destinoRe = GameObject.FindGameObjectWithTag ("nuvemRe");
+//		destinoMi = GameObject.FindGameObjectWithTag ("nuvemMi");
+//		destinoFa = GameObject.FindGameObjectWithTag ("nuvemFa");
+//		destinoSol = GameObject.FindGameObjectWithTag ("nuvemSol");
+//		destinoLa = GameObject.FindGameObjectWithTag ("nuvemLa");
+//		destinoSi = GameObject.FindGameObjectWithTag ("nuvemSi");
 
 
 		listadiglets.Add (digletDo);
@@ -50,17 +55,38 @@ public class DigletScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 // codigo usado para visualização na unity
-		if (Input.GetMouseButton(0) && touch == true) {
+
+		if (posicaoSequencia == sequencia.Count-1) {
+			this.barraStatus2.transform.position = new Vector3(barraStatus2.transform.position.x, barraStatus2.transform.position.y, -5);
+			this.downDigglets();
+			this.downDigglets();
+			posicaoSequencia = 0;
+			//objectController.SendMessage("gerarSequencia");
+		}
+
+		if (Input.GetMouseButtonDown(0) && touch == true) {
 			Vector2 pos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
 			Collider2D[] col = Physics2D.OverlapPointAll (pos);		
 
-			if(col.Length > 0)
+			if(col.Length > 0){
 				foreach (Collider2D c in col){
+					if(c.name.Equals(sequencia[posicaoSequencia])){
+						posicaoSequencia +=1;
+						Hitdiglet(c.transform);
+					}
 
-					Hitdiglet(c.transform);
+					else{
+						barraStatus1.transform.position = new Vector3(barraStatus1.transform.position.x, barraStatus1.transform.position.y, -5);
+						this.downDigglets();
+						this.downDigglets();
+			
+					
+					}
 
 				}
 			}
+		}
+					 
 
 		//Codigo para multitoque. Esta comentado, pois so funciona no smartphone 
 
@@ -90,30 +116,30 @@ public class DigletScript : MonoBehaviour {
 		b.audio.Play ();
 		b.rigidbody2D.velocity = Vector3.down * 10;
 
-		switch (b.name) {
-		case "diglettDo":
-				destinoDo.SendMessage (b.name);	
-				break;
-		case "diglettRe":
-			destinoRe.SendMessage (b.name);	
-				break;
-		case "diglettMi":
-			destinoMi.SendMessage (b.name);	
-				break;
-		case "diglettFa":
-			destinoFa.SendMessage (b.name);	
-				break;
-		case "diglettSol":
-			destinoSol.SendMessage (b.name);	
-				break;
-		case "diglettLa":
-			destinoLa.SendMessage (b.name);	
-				break;
-		case "diglettSi":
-			destinoSi.SendMessage (b.name);	
-				break;
+//		switch (b.name) {
+//		case "diglettDo":
+//			destinoDo.SendMessage (b.name);	
+//			break;
+//		case "diglettRe":
+//			destinoRe.SendMessage (b.name);	
+//				break;
+//		case "diglettMi":
+//			destinoMi.SendMessage (b.name);	
+//				break;
+//		case "diglettFa":
+//			destinoFa.SendMessage (b.name);	
+//				break;
+//		case "diglettSol":
+//			destinoSol.SendMessage (b.name);	
+//				break;
+//		case "diglettLa":
+//			destinoLa.SendMessage (b.name);	
+//				break;
+//		case "diglettSi":
+//			destinoSi.SendMessage (b.name);	
+//				break;
 
-		}
+//		}
 	}
 
 	public void downDigglets(){
@@ -121,6 +147,12 @@ public class DigletScript : MonoBehaviour {
 			i.rigidbody2D.gravityScale = 5;
 		touch = false;
 		}
+	}
+
+
+	public void receberSequencia(List<string> lista){
+		this.sequencia = lista; 
+		
 	}
 
 }
