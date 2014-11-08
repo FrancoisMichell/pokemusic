@@ -50,6 +50,7 @@
      <Compile Include="Assets\Scripts\BackgroundManager.cs" />
      <Compile Include="Assets\Scripts\DigletScript.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
+     <Compile Include="Assets\Scripts\InfinityDigletScript.cs" />
      <Compile Include="Assets\Scripts\Levels.cs" />
      <Compile Include="Assets\Scripts\ObjectBehavior.cs" />
      <Compile Include="Assets\Scripts\ObjectController.cs" />
