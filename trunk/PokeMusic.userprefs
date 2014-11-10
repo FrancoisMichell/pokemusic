@@ -1,11 +1,31 @@
 ﻿<Properties>
+<<<<<<< .mine
+<<<<<<< .mine
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\DigletScript.cs">
+=======
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\AnimationController.cs">
+=======
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\InfinityDigletScript.cs">
+>>>>>>> .r39
+>>>>>>> .r28
     <Files>
+<<<<<<< .mine
+<<<<<<< .mine
+      <File FileName="Assets\Scripts\SceneTransition.cs" Line="28" Column="7" />
+      <File FileName="Assets\Scripts\DigletScript.cs" Line="57" Column="3" />
+=======
+      <File FileName="Assets\Scripts\AnimationController.cs" Line="11" Column="17" />
+      <File FileName="Assets\Scripts\DigletScript.cs" Line="24" Column="3" />
+=======
       <File FileName="Assets\Scripts\DigletScript.cs" Line="60" Column="6" />
       <File FileName="Assets\Scripts\ObjectController.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\pitchScript.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\InfinityDigletScript.cs" Line="60" Column="28" />
+>>>>>>> .r39
+>>>>>>> .r28
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
