@@ -30,14 +30,6 @@ public class ObjectBehavior : MonoBehaviour {
 		}
 
 	}
-<<<<<<< .mine
-=======
-		if (controle == currentSpeed){
-			digglets.SendMessage("Upall");
- 
-		}
-	}
->>>>>>> .r39
 
 	void GameEnd()
 	{
