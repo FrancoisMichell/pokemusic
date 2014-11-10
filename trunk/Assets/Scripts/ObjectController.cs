@@ -16,23 +16,7 @@ public class ObjectController : MonoBehaviour {
 	public bool _isGameOver, _isPlaying;
 	
 	public List<GameObject> nuvem;
-<<<<<<< .mine
 	private List<string> sequencia;
-=======
-
-	private List<int> ordem = new List<int>();
-
-	private int numero;
-
-	private GameObject nuvemSeguinte;
-
-	private GameObject digglets;
-
-	private GameObject pitch;
-
-
->>>>>>> .r39
-
 	
 	private GameObject nuvemSeguinte, digglets;
 	
@@ -45,57 +29,15 @@ public class ObjectController : MonoBehaviour {
 		//ele iniciara a sequencia com apenas uma nuvem
 		this.gerarSequencia (1);
 
-<<<<<<< .mine
 	}
 	
 	void gerarSequencia(int tamanho){
-=======
-		pitch = GameObject.FindGameObjectWithTag ("pitch");
-		digglets = GameObject.FindGameObjectWithTag ("digglets");
->>>>>>> .r39
 		this.startPlay ();
-<<<<<<< .mine
 		maxNuvem = tamanho;
 
 		if (maxNuvem == 1) {
 			sequencia = new List<string> ();
 		}
-=======
-				
-				for (int i=0; i<maxNuvem; i++) {
-						numero = Random.Range (0, 7);
-						ordem.Add (numero);
-				}
-				for (int i=0; i<maxNuvem; i++) {
-						switch (ordem [i]) {
-						case 0:
-								nuvemSeguinte = nuvemDo;
-								break;
-						case 1:
-								nuvemSeguinte = nuvemRe;
-								break;
-						case 2:
-								nuvemSeguinte = nuvemMi;
-								break;
-						case 3:
-								nuvemSeguinte = nuvemFa;
-								break;
-						case 4:
-								nuvemSeguinte = nuvemSol;
-								break;
-						case 5:
-								nuvemSeguinte = nuvemLa;
-								break;
-						case 6:
-								nuvemSeguinte = nuvemSi;
-								break;
-						default:
-								break;
-						}
-						GameObject nuvemAtual = Instantiate (nuvemSeguinte) as GameObject;
-					nuvem.Add (nuvemAtual);
-						nuvemAtual.SetActive (false);
->>>>>>> .r39
 						
 		
 		//o tamanho da nuvem sera informada pelo Diglet Script
@@ -189,13 +131,8 @@ public class ObjectController : MonoBehaviour {
 		
 	}
 	public void finishPlay(){
-<<<<<<< .mine
 		this.enviaMensagem();
 		_isPlaying = false;	
-=======
-		_isPlaying = false;
-		Invoke ("enviaMensagem",7);
->>>>>>> .r39
 	}
 	
 	public bool getPlaying(){
