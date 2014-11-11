@@ -1,9 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ObjectBehavior.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GeniusDigletScript.cs">
     <Files>
-      <File FileName="Assets\Scripts\ObjectController.cs" Line="105" Column="11" />
-      <File FileName="Assets\Scripts\ObjectBehavior.cs" Line="26" Column="34" />
+      <File FileName="Assets\Scripts\GeniusDigletScript.cs" Line="140" Column="30" />
+      <File FileName="..\..\Documents\New Unity Project\Assets\Scripts\ObjectBehavior.cs" Line="25" Column="43" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

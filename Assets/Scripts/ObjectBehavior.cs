@@ -29,6 +29,8 @@ public class ObjectBehavior : MonoBehaviour {
 		//Comentando essa linha os objetos passam a nao serem mais criados
 		}
 
+
+
 	}
 
 	void GameEnd()
@@ -40,7 +42,9 @@ public class ObjectBehavior : MonoBehaviour {
 	{
 		if (c.CompareTag("MaquinaGenius"))
 		{
-		meteoro.SetActive(false);
+			//meteoro.SetActive(false);
+			meteoro.transform.position = new Vector3 (meteoro.transform.position.x, meteoro.transform.position.y, 10);
+//			Destroy(meteoro);
 		}
 		if (c.CompareTag("BarraSom"))
 		{
