@@ -1,8 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ObjectController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ObjectBehavior.cs">
     <Files>
-      <File FileName="Assets\Scripts\ObjectController.cs" Line="98" Column="3" />
+      <File FileName="Assets\Scripts\ObjectController.cs" Line="105" Column="11" />
+      <File FileName="Assets\Scripts\ObjectBehavior.cs" Line="26" Column="34" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
