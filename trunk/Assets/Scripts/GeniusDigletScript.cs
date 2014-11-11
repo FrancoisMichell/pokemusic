@@ -47,8 +47,10 @@ public class GeniusDigletScript : MonoBehaviour {
 		if (posicaoSequencia == sequencia.Count) {
 			this.barraStatus1.transform.position = new Vector3(barraStatus2.transform.position.x, barraStatus2.transform.position.y, -5);
 			posicaoSequencia = 0;
+
+			//objectController.SendMessage("startPlay");
 			//esse 3 significa que ele ira esperar 3 segundos para ser executado
-			Invoke("pedirSequencia",3);
+			Invoke("pedirSequencia",1f);
 		}
 		
 		if (Input.GetMouseButtonDown(0) && touch == true) {
@@ -68,6 +70,7 @@ public class GeniusDigletScript : MonoBehaviour {
 					else{
 						barraStatus2.transform.position = new Vector3(barraStatus1.transform.position.x, barraStatus1.transform.position.y, -5);
 						posicaoSequencia = 0;
+						//objectController.SendMessage("startPlay");
 						//esse 3 significa que ele ira esperar 3 segundos para ser executado
 						Invoke("pedirSequenciaInicio",3);
 						
@@ -137,6 +140,7 @@ public class GeniusDigletScript : MonoBehaviour {
 		this.downDigglets();
 		tamanhoSequencia = 1;
 		objectController.SendMessage("gerarSequencia", tamanhoSequencia);
+		Application.LoadLevel ("Genius");
 		
 	}
 

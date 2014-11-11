@@ -10,6 +10,7 @@ public class ObjectController : MonoBehaviour {
 	private float currentRateSpawn;
 	
 	public int maxNuvem;
+	private int contagem;
 
 	public GameObject nuvemDo, nuvemRe, nuvemMi, nuvemFa, nuvemSol, nuvemLa, nuvemSi;
 	
@@ -28,6 +29,7 @@ public class ObjectController : MonoBehaviour {
 		digglets = GameObject.FindGameObjectWithTag ("digglets");		
 		//ele iniciara a sequencia com apenas uma nuvem
 		this.gerarSequencia (1);
+
 
 	}
 	
@@ -82,8 +84,8 @@ public class ObjectController : MonoBehaviour {
 	void Update () {
 		// aqui faz a comparaçao e identifica que o ultimo objeto foi lancado
 		//metodo finish play faz com que a sequencia nao se repita
-		if (nuvem [nuvem.Count - 1].transform.position.x < -4f ) {
-			this.finishPlay();
+		if (nuvem [nuvem.Count - 1].transform.position.x < -4f) {
+			this.finishPlay ();
 			print ("S");
 		}
 		
@@ -94,15 +96,23 @@ public class ObjectController : MonoBehaviour {
 		
 	}
 	
-	//	}
+		
 	private void Spawn() {
 		print ("qw" + maxNuvem);		
 		float randPosition = Random.Range (AlturaMax, AlturaMin);
 		GameObject nuvemAtual = null;
 		for (int i=0; i < maxNuvem; i++) {
 			if(nuvem[i].activeSelf == false) {
+				if (contagem <= maxNuvem){
 				nuvemAtual = nuvem[i];
+				contagem += 1;
 				break;
+				}
+
+				else {
+					contagem = 0; 
+					break;
+				}
 			}
 		}
 
@@ -133,6 +143,10 @@ public class ObjectController : MonoBehaviour {
 	public void finishPlay(){
 		this.enviaMensagem();
 		_isPlaying = false;	
+		foreach(GameObject i in nuvem){
+			i.SetActive(false);
+
+		}
 	}
 	
 	public bool getPlaying(){

@@ -1,9 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\DigletScript.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ObjectController.cs">
     <Files>
-      <File FileName="Assets\Scripts\SceneTransition.cs" Line="28" Column="7" />
-      <File FileName="Assets\Scripts\DigletScript.cs" Line="57" Column="3" />
+      <File FileName="Assets\Scripts\ObjectController.cs" Line="98" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
