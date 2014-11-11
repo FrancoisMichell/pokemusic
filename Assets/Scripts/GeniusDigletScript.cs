@@ -16,6 +16,11 @@ public class GeniusDigletScript : MonoBehaviour {
 	public GameObject barraStatus1;
 	public GameObject barraStatus2;
 
+	public TextMesh Score;
+	public TextMesh HiScore;
+	private int _score;
+	private int _hiscore;
+
 
 	private int toque;
 
@@ -39,7 +44,9 @@ public class GeniusDigletScript : MonoBehaviour {
 		listadiglets.Add (digletSol);
 		listadiglets.Add (digletLa);
 		listadiglets.Add (digletSi);
-		
+
+		_hiscore = PlayerPrefs.GetInt ("hiscore", 0);
+		HiScore.text = "" + _hiscore;
 	}
 	
 	// Update is called once per frame
@@ -72,7 +79,7 @@ public class GeniusDigletScript : MonoBehaviour {
 					if (c.name.Equals (sequencia [posicaoSequencia])) {
 							posicaoSequencia += 1;
 							toque += 1;
-							//Implementar a pontuaçao aqui!!
+							PlayerScored();
 						}
 					
 					//caso nao esteja, sera exibido o "FAIL" e sera gerada uma sequencia do zero novamente
@@ -153,6 +160,18 @@ public class GeniusDigletScript : MonoBehaviour {
 		objectController.SendMessage("gerarSequencia", tamanhoSequencia);
 		Application.LoadLevel (Application.loadedLevel);
 		
+	}
+
+	void PlayerScored()
+	{
+		_score++;
+		Score.text = "" + _score;
+		
+		if (_score > _hiscore) {
+			_hiscore = _score;
+			HiScore.text = "" + _hiscore;
+			PlayerPrefs.SetInt ("hiscore", _hiscore);
+		}
 	}
 
 }
