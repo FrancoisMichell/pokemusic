@@ -25,7 +25,7 @@ public class ObjectBehavior : MonoBehaviour {
 		transform.position += new Vector3 (speed, 0, 0) * Time.deltaTime;
 		//isso nao e usado aparetemente
 		if (transform.position.x < -4f) {
-			meteoro.SetActive(false);
+			meteoro.transform.position = new Vector3(meteoro.transform.position.x, meteoro.transform.position.y, 10); ;
 		//Comentando essa linha os objetos passam a nao serem mais criados
 		}
 
