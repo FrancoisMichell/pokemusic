@@ -34,7 +34,7 @@ public class ObjectController : MonoBehaviour {
 	}
 	
 	void gerarSequencia(int tamanho){
-		this.startPlay ();
+		startPlay ();
 		maxNuvem = tamanho;
 
 		if (maxNuvem == 1) {
@@ -86,26 +86,26 @@ public class ObjectController : MonoBehaviour {
 		//metodo finish play faz com que a sequencia nao se repita
 		if (nuvem [nuvem.Count - 1].transform.position.x < -4f) {
 			this.finishPlay ();
-			print ("S");
+
 		}
-		
 		currentRateSpawn += Time.deltaTime;
-		if (_isPlaying)
+		if (_isPlaying) {
 			LancarNuvem ();
+
+		}
 		
 		
 	}
 	
 		
 	private void Spawn() {
-		print ("qw" + maxNuvem);		
 		float randPosition = Random.Range (AlturaMax, AlturaMin);
 		GameObject nuvemAtual = null;
 		for (int i=0; i < maxNuvem; i++) {
 			if(nuvem[i].activeSelf == false) {
 				if (contagem <= maxNuvem){
-				nuvemAtual = nuvem[i];
-				contagem += 1;
+					nuvemAtual = nuvem[i];
+					contagem += 1;
 				break;
 				}
 
@@ -119,6 +119,7 @@ public class ObjectController : MonoBehaviour {
 		if (nuvemAtual != null   && _isPlaying == true) {
 			nuvemAtual.transform.position = new Vector3(transform.position.x, randPosition, transform.position.y);
 			nuvemAtual.SetActive(true);
+
 			
 				
 		}
