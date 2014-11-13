@@ -94,7 +94,7 @@ public class GeniusDigletScript : MonoBehaviour {
 				}
 				}
 			}
-			print (toque + " " + sequencia.Count);
+
 		}
 
 		//Codigo para multitoque. Esta comentado, pois so funciona no smartphone 
@@ -114,7 +114,6 @@ public class GeniusDigletScript : MonoBehaviour {
 		
 	}
 	public void Upall() {
-		print ("su");
 		foreach (Transform i in listadiglets){
 			Updiglet (i);
 			touch = true;
@@ -131,7 +130,6 @@ public class GeniusDigletScript : MonoBehaviour {
 	}
 	
 	public void downDigglets(){
-		print ("down");
 		foreach (Transform i in listadiglets) {
 			i.rigidbody2D.gravityScale = 5;
 			touch = false;
