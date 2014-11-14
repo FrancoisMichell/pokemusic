@@ -23,7 +23,7 @@ public class GeniusDigletScript : MonoBehaviour {
 
 
 	private int toque;
-
+    private bool pausado;
 	
 	// Use this for initialization
 	void Start () {		
@@ -67,7 +67,7 @@ public class GeniusDigletScript : MonoBehaviour {
 
 
 		}
-		if (Input.GetMouseButtonDown (0) && touch == true) {
+		if (Input.GetMouseButtonDown (0) && touch == true && pausado == false) {
 			
 			Vector2 pos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
 			Collider2D[] col = Physics2D.OverlapPointAll (pos);		
@@ -113,7 +113,8 @@ public class GeniusDigletScript : MonoBehaviour {
 
 		
 	}
-	public void Upall() {
+	
+    public void Upall() {
 		foreach (Transform i in listadiglets){
 			Updiglet (i);
 			touch = true;
@@ -136,10 +137,8 @@ public class GeniusDigletScript : MonoBehaviour {
 		}
 	}
 	
-	
 	public void receberSequencia(List<string> lista){
 		this.sequencia = lista; 
-		
 	}
 	
 	public void pedirSequencia(){
@@ -157,11 +156,9 @@ public class GeniusDigletScript : MonoBehaviour {
 		tamanhoSequencia = 1;
 		objectController.SendMessage("gerarSequencia", tamanhoSequencia);
 		Application.LoadLevel (Application.loadedLevel);
-		
 	}
 
-	void PlayerScored()
-	{
+	void PlayerScored(){
 		_score++;
 		Score.text = "" + _score;
 		
@@ -171,5 +168,10 @@ public class GeniusDigletScript : MonoBehaviour {
 			PlayerPrefs.SetInt ("hiscore", _hiscore);
 		}
 	}
-
+    void Pausar(){
+        pausado = true;
+    }
+    void Continuar(){
+        pausado = false;
+    }
 }
