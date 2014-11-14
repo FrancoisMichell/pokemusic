@@ -44,35 +44,39 @@ public class ObjectController : MonoBehaviour {
 		
 		//o tamanho da nuvem sera informada pelo Diglet Script
 		int numero = Random.Range (0, 7);
-		if(numero == 0){
-			nuvemSeguinte = nuvemDo;
-			sequencia.Add("diglettDo");					
-		}
-		else if(numero == 1){
-			nuvemSeguinte = nuvemRe;
-			sequencia.Add("diglettRe");
-		}
-		else if(numero == 2){
-			nuvemSeguinte = nuvemMi;
-			sequencia.Add("diglettMi");
-		}
-		else if(numero == 3){
-			nuvemSeguinte = nuvemFa;
-			sequencia.Add("diglettFa");
-		}
-		else if(numero == 4){
-			nuvemSeguinte = nuvemSol;
-			sequencia.Add("diglettSol");
-		}
-		else if(numero == 5){
-			nuvemSeguinte = nuvemLa;
-			sequencia.Add("diglettLa");
-		}
-		else if(numero == 6){
-			nuvemSeguinte = nuvemSi;
-			sequencia.Add("diglettSi");
-		}
-		GameObject nuvemAtual = Instantiate (nuvemSeguinte) as GameObject;
+
+        switch (numero) {
+            case 0:
+			    nuvemSeguinte = nuvemDo;
+			    sequencia.Add("diglettDo");					
+                break;
+            case 1:
+			    nuvemSeguinte = nuvemRe;
+			    sequencia.Add("diglettRe");
+                break;
+            case 2:
+			    nuvemSeguinte = nuvemMi;
+			    sequencia.Add("diglettMi");
+                break;
+            case 3:
+			    nuvemSeguinte = nuvemFa;
+			    sequencia.Add("diglettFa");
+                break;
+            case 4:
+			    nuvemSeguinte = nuvemSol;
+			    sequencia.Add("diglettSol");
+                break;
+            case 5:
+			    nuvemSeguinte = nuvemLa;
+			    sequencia.Add("diglettLa");
+                break;
+            case 6:
+			    nuvemSeguinte = nuvemSi;
+			    sequencia.Add("diglettSi");
+                break;
+           
+        }
+        GameObject nuvemAtual = Instantiate (nuvemSeguinte) as GameObject;
 		nuvem.Add (nuvemAtual);
 		nuvemAtual.SetActive (false);
 
