@@ -8,6 +8,7 @@ public class ObjectBehavior : MonoBehaviour {
 	private bool _isGameOver;
 	private AudioSource audioNota;
 	private GameObject destinoMaquina;
+	
 
 
 	// Use this for initialization
@@ -15,6 +16,7 @@ public class ObjectBehavior : MonoBehaviour {
 		_isGameOver = false;
 		audioNota = GetComponent<AudioSource> ();
 		destinoMaquina = GameObject.FindGameObjectWithTag ("MaquinaGenius");
+
 	
 	}
 	
@@ -40,16 +42,14 @@ public class ObjectBehavior : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D c)
 	{
-		if (c.CompareTag("MaquinaGenius"))
+		if (c.CompareTag ("MaquinaGenius")) 
 		{
-			//meteoro.SetActive(false);
 			meteoro.transform.position = new Vector3 (meteoro.transform.position.x, meteoro.transform.position.y, 10);
-//			Destroy(meteoro);
 		}
-		if (c.CompareTag("BarraSom"))
+		if (c.CompareTag ("BarraSom")) 
 		{
-			audioNota.Play();
+			audioNota.Play ();
 			destinoMaquina.SendMessage ("AtivarMaquina");
 		}
-}
+	}
 }
