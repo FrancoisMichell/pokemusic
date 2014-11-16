@@ -1,7 +1,7 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2008
 
-Project("{8045AEEE-7D02-3B70-AA41-DEAD51464C89}") = "PokeMusic", "Assembly-CSharp-vs.csproj", "{A1DE0C05-462C-7B4C-9581-D41CB92E8F04}"
+Project("{C183D24E-D596-8C36-36E9-9F01848843E0}") = "Pokemusic", "Assembly-CSharp-vs.csproj", "{44153D13-62CC-0E09-B8E6-E058B2373BAA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,15 +9,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A1DE0C05-462C-7B4C-9581-D41CB92E8F04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A1DE0C05-462C-7B4C-9581-D41CB92E8F04}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A1DE0C05-462C-7B4C-9581-D41CB92E8F04}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A1DE0C05-462C-7B4C-9581-D41CB92E8F04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44153D13-62CC-0E09-B8E6-E058B2373BAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44153D13-62CC-0E09-B8E6-E058B2373BAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44153D13-62CC-0E09-B8E6-E058B2373BAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44153D13-62CC-0E09-B8E6-E058B2373BAA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-																																																																																																						GlobalSection(MonoDevelopProperties) = preSolution
+																																																																																																													GlobalSection(MonoDevelopProperties) = preSolution
 =======
 																																																																																											GlobalSection(MonoDevelopProperties) = preSolution
 >>>>>>> .r28

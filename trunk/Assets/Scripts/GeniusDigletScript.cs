@@ -12,6 +12,7 @@ public class GeniusDigletScript : MonoBehaviour {
 	//o indice da lista de sequencias que esta sendo usado atualmente
 	private int posicaoSequencia = 0;
 	private int tamanhoSequencia = 1;
+
 	private GameObject objectController;
 	public GameObject barraStatus1;
 	public GameObject barraStatus2;
@@ -24,7 +25,11 @@ public class GeniusDigletScript : MonoBehaviour {
 
 	private int toque;
     private bool pausado;
+
+	private GameObject geniusCamera;
+	private GameObject maquinaGenius;
 	
+
 	// Use this for initialization
 	void Start () {		
 		digletDo = transform.FindChild ("diglettDo");
@@ -36,6 +41,9 @@ public class GeniusDigletScript : MonoBehaviour {
 		digletSi = transform.FindChild ("diglettSi");
 		
 		objectController = GameObject.FindGameObjectWithTag ("Launcher");
+		geniusCamera = GameObject.FindGameObjectWithTag ("MainCamera");
+		//A maquina do modo Genius esta setada com a tag "BarraSom"
+		maquinaGenius = GameObject.FindGameObjectWithTag ("BarraSom");
 		
 		listadiglets.Add (digletDo);
 		listadiglets.Add (digletRe);
@@ -73,7 +81,6 @@ public class GeniusDigletScript : MonoBehaviour {
 			Collider2D[] col = Physics2D.OverlapPointAll (pos);		
 			
 			if (col.Length > 0) {
-				if (tamanhoSequencia > toque){
 				foreach (Collider2D c in col) {
 					//comparacao para saber se o nome do objeto clicado e igual a string que esta na posicao da sequencia atual
 					if (c.name.Equals (sequencia [posicaoSequencia])) {
@@ -81,14 +88,25 @@ public class GeniusDigletScript : MonoBehaviour {
 							toque += 1;
 							PlayerScored();
 						}
+					else if (c.CompareTag("BtJogar"))
+						{
+							Application.LoadLevel (Application.loadedLevel);
+						}
+					else if (c.CompareTag("BtMenu"))
+						{
+							Application.LoadLevel("Menu");
+						}
+
 					
 					//caso nao esteja, sera exibido o "FAIL" e sera gerada uma sequencia do zero novamente
 					else {
 						barraStatus2.transform.position = new Vector3 (barraStatus1.transform.position.x, barraStatus1.transform.position.y, -5);
 						posicaoSequencia = 0;
 						//objectController.SendMessage("startPlay");
-						//esse 3 significa que ele ira esperar 3 segundos para ser executado
-						Invoke ("pedirSequenciaInicio", 3);
+						//esse 1 significa que ele ira esperar 3 segundos para ser executado
+						Invoke ("moverCamera", 1);
+						Invoke("desativarMaquina",2);
+
 					}
 					Hitdiglet (c.transform);
 				}
@@ -108,7 +126,7 @@ public class GeniusDigletScript : MonoBehaviour {
 		//
 		//			}
 		//		}
-	}
+
 	private void testando(){
 
 		
@@ -155,7 +173,6 @@ public class GeniusDigletScript : MonoBehaviour {
 		downDigglets();
 		tamanhoSequencia = 1;
 		objectController.SendMessage("gerarSequencia", tamanhoSequencia);
-		Application.LoadLevel (Application.loadedLevel);
 	}
 
 	void PlayerScored(){
@@ -168,10 +185,19 @@ public class GeniusDigletScript : MonoBehaviour {
 			PlayerPrefs.SetInt ("hiscore", _hiscore);
 		}
 	}
+	void moverCamera() 
+	{
+		geniusCamera.SendMessage ("paraScore");
+	}
+
     void Pausar(){
         pausado = true;
     }
     void Continuar(){
         pausado = false;
     }
+	void desativarMaquina()
+	{
+		maquinaGenius.SetActive(false);
+	}
 }
