@@ -73,47 +73,49 @@ public class GeniusDigletScript : MonoBehaviour {
 			Invoke("pedirSequencia",1f);
 
 
-
 		}
-		if (Input.GetMouseButtonDown (0) && touch == true && pausado == false) {
-			
-			Vector2 pos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
-			Collider2D[] col = Physics2D.OverlapPointAll (pos);		
-			
-			if (col.Length > 0) {
-				foreach (Collider2D c in col) {
-					//comparacao para saber se o nome do objeto clicado e igual a string que esta na posicao da sequencia atual
-					if (c.name.Equals (sequencia [posicaoSequencia])) {
-							posicaoSequencia += 1;
-							toque += 1;
-							PlayerScored();
-						}
-					else if (c.CompareTag("BtJogar"))
-						{
-							Application.LoadLevel (Application.loadedLevel);
-						}
-					else if (c.CompareTag("BtMenu"))
-						{
-							Application.LoadLevel("Menu");
-						}
+        if (pausado == false) {
 
-					
-					//caso nao esteja, sera exibido o "FAIL" e sera gerada uma sequencia do zero novamente
-					else {
-						barraStatus2.transform.position = new Vector3 (barraStatus1.transform.position.x, barraStatus1.transform.position.y, -5);
-						posicaoSequencia = 0;
-						//objectController.SendMessage("startPlay");
-						//esse 1 significa que ele ira esperar 3 segundos para ser executado
-						Invoke ("moverCamera", 1);
-						Invoke("desativarMaquina",2);
+            if (Input.GetMouseButtonDown(0) && touch == true) {
 
-					}
-					Hitdiglet (c.transform);
-				}
-				}
-			}
+                Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Collider2D[] col = Physics2D.OverlapPointAll(pos);
 
-		}
+                if (col.Length > 0) {
+                    foreach (Collider2D c in col) {
+                        //comparacao para saber se o nome do objeto clicado e igual a string que esta na posicao da sequencia atual
+                        if (c.name.Equals(sequencia[posicaoSequencia])) {
+                            posicaoSequencia += 1;
+                            //toque += 1;
+                            PlayerScored();
+                        } else if (c.CompareTag("BtJogar")) {
+                            Application.LoadLevel(Application.loadedLevel);
+                        } else if (c.CompareTag("BtMenu")) {
+                            Application.LoadLevel("Menu");
+                        } else if (c.CompareTag("colPausa")) {
+                            break ;
+                        }
+
+
+                          //caso nao esteja, sera exibido o "FAIL" e sera gerada uma sequencia do zero novamente    
+                        else {
+                            barraStatus2.transform.position = new Vector3(barraStatus1.transform.position.x, barraStatus1.transform.position.y, -5);
+                            posicaoSequencia = 0;
+                            //objectController.SendMessage("startPlay");
+                            //esse 1 significa que ele ira esperar 3 segundos para ser executado
+                            Invoke("moverCamera", 1);
+                            Invoke("desativarMaquina", 2);
+
+                        }
+                        Hitdiglet(c.transform);
+                    }
+                }
+            }
+        } else {
+            toque = toque;
+        }
+
+	}
 
 		//Codigo para multitoque. Esta comentado, pois so funciona no smartphone 
 		
@@ -127,11 +129,6 @@ public class GeniusDigletScript : MonoBehaviour {
 		//			}
 		//		}
 
-	private void testando(){
-
-		
-	}
-	
     public void Upall() {
 		foreach (Transform i in listadiglets){
 			Updiglet (i);
@@ -192,9 +189,12 @@ public class GeniusDigletScript : MonoBehaviour {
 
     void Pausar(){
         pausado = true;
+        Time.timeScale = 0f;
     }
     void Continuar(){
         pausado = false;
+        toque -= 1;
+        Time.timeScale = 1f;
     }
 	void desativarMaquina()
 	{
