@@ -18,7 +18,11 @@ public class GeniusDigletScript : MonoBehaviour {
 	public GameObject barraStatus2;
 
 	public TextMesh Score;
-	public TextMesh HiScore;
+    public TextMesh Score2;
+	
+    public TextMesh HiScore;
+    public TextMesh Moedas;
+
 	private int _score;
 	private int _hiscore;
 
@@ -76,7 +80,7 @@ public class GeniusDigletScript : MonoBehaviour {
 		}
         if (pausado == false) {
 
-            if (Input.GetMouseButtonDown(0) && touch == true) {
+            if (Input.GetMouseButtonDown(0) && touch == true && toque < sequencia.Count) {
 
                 Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 Collider2D[] col = Physics2D.OverlapPointAll(pos);
@@ -86,7 +90,7 @@ public class GeniusDigletScript : MonoBehaviour {
                         //comparacao para saber se o nome do objeto clicado e igual a string que esta na posicao da sequencia atual
                         if (c.name.Equals(sequencia[posicaoSequencia])) {
                             posicaoSequencia += 1;
-                            //toque += 1;
+                            toque += 1;
                             PlayerScored();
                         } else if (c.CompareTag("BtJogar")) {
                             Application.LoadLevel(Application.loadedLevel);
@@ -111,9 +115,7 @@ public class GeniusDigletScript : MonoBehaviour {
                     }
                 }
             }
-        } else {
-            toque = toque;
-        }
+        } 
 
 	}
 
@@ -175,7 +177,11 @@ public class GeniusDigletScript : MonoBehaviour {
 	void PlayerScored(){
 		_score++;
 		Score.text = "" + _score;
-		
+        Score2.text = "" + _score;
+
+
+        Moedas.text = "" + _score/10;
+
 		if (_score > _hiscore) {
 			_hiscore = _score;
 			HiScore.text = "" + _hiscore;
