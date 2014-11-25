@@ -30,9 +30,6 @@ public class ObjectBehavior : MonoBehaviour {
 			meteoro.transform.position = new Vector3(meteoro.transform.position.x, meteoro.transform.position.y, 10); ;
 		//Comentando essa linha os objetos passam a nao serem mais criados
 		}
-
-
-
 	}
 
 	void GameEnd()
