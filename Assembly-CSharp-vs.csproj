@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{8DBE6885-6761-4F00-46F2-B5CC3CD8B79C}</ProjectGuid>
+	<ProjectGuid>{A1DE0C05-462C-7B4C-9581-D41CB92E8F04}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -58,6 +58,8 @@
      <Compile Include="Assets\Scripts\ObjectBehavior.cs" />
      <Compile Include="Assets\Scripts\ObjectController.cs" />
      <Compile Include="Assets\Scripts\PlayScript.cs" />
+     <Compile Include="Assets\Scripts\PreviewDigManager.cs" />
+     <Compile Include="Assets\Scripts\PreviewManager.cs" />
      <Compile Include="Assets\Scripts\SceneTransition.cs" />
      <Compile Include="Assets\Scripts\ScriptsNotas\notaDo.cs" />
      <Compile Include="Assets\Scripts\ScriptsNotas\notaFa.cs" />
