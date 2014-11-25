@@ -15,7 +15,7 @@
 
 //        if (Input.GetMouseButton(0)) {
 
-//            Vector2 vetor = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+//            Vector2 vetor = Camera.main.ScreenToWorldPoint(Input.mousePosition);    
 //            Collider2D[] sprites = Physics2D.OverlapPointAll(vetor);
 
 //            if (sprites.Length > 0) {
