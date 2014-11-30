@@ -15,7 +15,7 @@ public class InfinityDigletScript : MonoBehaviour {
 	private GameObject destinoSi;
 	private bool touch;
 
-
+    private string diggsAtuais;
 		
 	// Use this for initialization
 	void Start () {		
@@ -26,6 +26,17 @@ public class InfinityDigletScript : MonoBehaviour {
 		digletSol = transform.FindChild ("diglettSol");
 		digletLa = transform.FindChild ("diglettLa");
 		digletSi = transform.FindChild ("diglettSi");
+
+
+        diggsAtuais = PlayerPrefs.GetString("dig", "");
+
+        digletDo.renderer.material = Resources.LoadAssetAtPath<Material>("Assets/Material/Diggs/diglet" + diggsAtuais + "Do.mat");
+        digletRe.renderer.material = Resources.LoadAssetAtPath<Material>("Assets/Material/Diggs/diglet" + diggsAtuais + "Re.mat");
+        digletMi.renderer.material = Resources.LoadAssetAtPath<Material>("Assets/Material/Diggs/diglet" + diggsAtuais + "Mi.mat");
+        digletFa.renderer.material = Resources.LoadAssetAtPath<Material>("Assets/Material/Diggs/diglet" + diggsAtuais + "Fa.mat");
+        digletSol.renderer.material = Resources.LoadAssetAtPath<Material>("Assets/Material/Diggs/diglet" + diggsAtuais + "Sol.mat");
+        digletLa.renderer.material = Resources.LoadAssetAtPath<Material>("Assets/Material/Diggs/diglet" + diggsAtuais + "La.mat");
+        digletSi.renderer.material = Resources.LoadAssetAtPath<Material>("Assets/Material/Diggs/diglet" + diggsAtuais + "Si.mat");
 
 		destinoDo = GameObject.FindGameObjectWithTag ("nuvemDo");
 		destinoRe = GameObject.FindGameObjectWithTag ("nuvemRe");

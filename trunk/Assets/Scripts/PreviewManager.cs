@@ -16,6 +16,12 @@ public class PreviewManager : MonoBehaviour {
     private bool block;
 
     private string testando;
+
+    public GameObject btComprar;
+
+    private string situacaoDefault = "nao comprado";
+    private string situacaoNoite = "nao comprado";
+    private string situacaoHalloween = "nao comprado";
     
     // Use this for initialization
     void Start() {
@@ -24,6 +30,12 @@ public class PreviewManager : MonoBehaviour {
         materiaisFundo[0] = Default;
         materiaisFundo[1] = Noite;
         materiaisFundo[2] = Halloween;
+
+        situacaoDefault = PlayerPrefs.GetString("default", "");
+        situacaoNoite = PlayerPrefs.GetString("noite", "");
+        situacaoHalloween = PlayerPrefs.GetString("halloween", "");
+
+        verificaSituacao(0);
 
     }
 
@@ -51,13 +63,56 @@ public class PreviewManager : MonoBehaviour {
                     if (c.CompareTag("ComprarFundo")) {
                         block = true;
                         PlayerPrefs.SetInt("fundo", index);
+                        alterasituacao(index);
                         Invoke("Unblock", 0.2f);
+
+                        // Apagar essa linha quando a tela de confirmação for implementada, ou a verificação da quantidade de 
+                        //moedas
+                        btComprar.SetActive(false); 
+
+
                     }
                 }
             }
             print(index);
         }
 
+    }
+
+    private void alterasituacao(int index) {
+        if (index == 0) {
+            situacaoDefault = "comprado";
+            PlayerPrefs.SetString("default", situacaoDefault);
+        } else if (index == 1) {
+            situacaoNoite = "comprado";
+            PlayerPrefs.SetString("noite", situacaoNoite);
+        } else if (index == 2) {
+            situacaoHalloween = "comprado";
+            PlayerPrefs.SetString("halloween", situacaoHalloween);
+        }
+        
+    }
+
+    private void verificaSituacao(int index) {
+        if (index == 0) {
+            if (situacaoDefault == "comprado") {
+                btComprar.SetActive(false);
+            } else {
+                btComprar.SetActive(true);
+            }
+        } else if (index == 1) {
+            if (situacaoNoite == "comprado") {
+                btComprar.SetActive(false);
+            } else {
+                btComprar.SetActive(true);
+            }
+        } else if (index == 2) {
+            if (situacaoHalloween == "comprado") {
+                btComprar.SetActive(false);
+            } else {
+                btComprar.SetActive(true);
+            }
+        }
     }
 
     private void mudarBgLeft() {
@@ -68,6 +123,7 @@ public class PreviewManager : MonoBehaviour {
             index -= 1;
             Invoke("Unblock", 0.2f);
         }
+        verificaSituacao(index);
         MudaBg(index);
     }
 
@@ -79,6 +135,7 @@ public class PreviewManager : MonoBehaviour {
             index += 1;
             Invoke("Unblock", 0.2f);
         }
+        verificaSituacao(index);
         MudaBg(index);
     }
 
@@ -89,6 +146,7 @@ public class PreviewManager : MonoBehaviour {
     }
     private void MudaBg(int index) {
         renderer.material = materiaisFundo[index];
+
         
 
     }
