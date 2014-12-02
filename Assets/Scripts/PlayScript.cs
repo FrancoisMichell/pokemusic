@@ -7,7 +7,7 @@ public class PlayScript : MonoBehaviour {
 
     void Start() {
 
-        cam = GameObject.FindGameObjectWithTag("MainCamera");
+       // cam = GameObject.FindGameObjectWithTag("MainCamera");
     }
 
     // Update is called once per frame
