@@ -12,6 +12,7 @@ public class ChallengeDigletScript : MonoBehaviour {
 	public GameObject barraStatus1, barraStatus2, barraStatus3;
 	private bool touch;
 	private bool liberado; 
+	private string diggsAtuais;
 	
 	// Use this for initialization
 	void Start () {	
@@ -24,7 +25,16 @@ public class ChallengeDigletScript : MonoBehaviour {
 		digletSi = transform.FindChild ("diglettSi");
 
 		sequencia.Add ("");
+		diggsAtuais = PlayerPrefs.GetString("dig", "");
 		objectController = GameObject.FindGameObjectWithTag("Launcher");
+
+		digletDo.renderer.material = Resources.LoadAssetAtPath<Material>("Assets/Material/Diggs/diglet" + diggsAtuais + "Do.mat");
+		digletRe.renderer.material = Resources.LoadAssetAtPath<Material>("Assets/Material/Diggs/diglet" + diggsAtuais + "Re.mat");
+		digletMi.renderer.material = Resources.LoadAssetAtPath<Material>("Assets/Material/Diggs/diglet" + diggsAtuais + "Mi.mat");
+		digletFa.renderer.material = Resources.LoadAssetAtPath<Material>("Assets/Material/Diggs/diglet" + diggsAtuais + "Fa.mat");
+		digletSol.renderer.material = Resources.LoadAssetAtPath<Material>("Assets/Material/Diggs/diglet" + diggsAtuais + "Sol.mat");
+		digletLa.renderer.material = Resources.LoadAssetAtPath<Material>("Assets/Material/Diggs/diglet" + diggsAtuais + "La.mat");
+		digletSi.renderer.material = Resources.LoadAssetAtPath<Material>("Assets/Material/Diggs/diglet" + diggsAtuais + "Si.mat");
 		
 		listadiglets.Add (digletDo);
 		listadiglets.Add (digletRe);

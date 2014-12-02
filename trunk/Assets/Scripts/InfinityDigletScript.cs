@@ -63,6 +63,14 @@ public class InfinityDigletScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 // codigo usado para visualização na unity
+
+		foreach (Transform d in listadiglets){
+			Quaternion angulo = new Quaternion();
+			angulo.Set(0f,0f,0f,0f);
+			d.rotation = angulo;
+			
+		}
+
 		if (Input.GetMouseButton(0) && touch == true) {
 			Vector2 pos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
 			Collider2D[] col = Physics2D.OverlapPointAll (pos);		
