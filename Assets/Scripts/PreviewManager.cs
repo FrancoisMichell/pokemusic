@@ -5,9 +5,11 @@ public class PreviewManager : MonoBehaviour {
 
 
     public Material[] materiaisFundo;
+    public int[] precos;
 
     private int index = 0;
 
+    public TextMesh preco;
 
     public Material Default;
     public Material Noite;
@@ -18,11 +20,12 @@ public class PreviewManager : MonoBehaviour {
     private string testando;
 
     public GameObject btComprar;
+    public GameObject grass;
 
-    private string situacaoDefault = "nao comprado";
+    //private string situacaoDefault = "comprado";
     private string situacaoNoite = "nao comprado";
     private string situacaoHalloween = "nao comprado";
-    
+
     // Use this for initialization
     void Start() {
         block = false;
@@ -31,12 +34,15 @@ public class PreviewManager : MonoBehaviour {
         materiaisFundo[1] = Noite;
         materiaisFundo[2] = Halloween;
 
-        situacaoDefault = PlayerPrefs.GetString("default", "");
+        precos = new int[3];
+        precos[0] = 00;
+        precos[1] = 20;
+        precos[2] = 30;
+
         situacaoNoite = PlayerPrefs.GetString("noite", "");
         situacaoHalloween = PlayerPrefs.GetString("halloween", "");
 
         verificaSituacao(0);
-
     }
 
     // Update is called once per frame
@@ -68,38 +74,28 @@ public class PreviewManager : MonoBehaviour {
 
                         // Apagar essa linha quando a tela de confirmação for implementada, ou a verificação da quantidade de 
                         //moedas
-                        btComprar.SetActive(false); 
-
+                        btComprar.SetActive(false);
 
                     }
                 }
             }
-            print(index);
         }
-
     }
 
     private void alterasituacao(int index) {
-        if (index == 0) {
-            situacaoDefault = "comprado";
-            PlayerPrefs.SetString("default", situacaoDefault);
-        } else if (index == 1) {
+        if (index == 1) {
             situacaoNoite = "comprado";
             PlayerPrefs.SetString("noite", situacaoNoite);
         } else if (index == 2) {
             situacaoHalloween = "comprado";
             PlayerPrefs.SetString("halloween", situacaoHalloween);
         }
-        
+
     }
 
     private void verificaSituacao(int index) {
         if (index == 0) {
-            if (situacaoDefault == "comprado") {
-                btComprar.SetActive(false);
-            } else {
-                btComprar.SetActive(true);
-            }
+            btComprar.SetActive(false);
         } else if (index == 1) {
             if (situacaoNoite == "comprado") {
                 btComprar.SetActive(false);
@@ -141,14 +137,15 @@ public class PreviewManager : MonoBehaviour {
 
     private void Unblock() {
         block = false;
-
-
     }
+
     private void MudaBg(int index) {
         renderer.material = materiaisFundo[index];
 
-        
+        if (index == 2) {
+            grass.SetActive(false);
+        } else grass.SetActive(true);
 
+        preco.text = precos[index].ToString();
     }
 }
-    

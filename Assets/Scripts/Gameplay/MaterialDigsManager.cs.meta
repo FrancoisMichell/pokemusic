@@ -1,0 +1,29 @@
+fileFormatVersion: 2
+guid: 6448551e499c37648b0b1699934b1f86
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - defaultDo: {fileID: 2100000, guid: fc6eb6e90d7f2bb44a7cd628953b312a, type: 2}
+  - defaultRe: {fileID: 2100000, guid: 97864a90f6d6cad4585e39ed8904c452, type: 2}
+  - defaultMi: {fileID: 2100000, guid: cd98890341f93be4e8a4a1e958d89f03, type: 2}
+  - defaultFa: {fileID: 2100000, guid: 9e384e3434d655c46bc3f774dae5a14d, type: 2}
+  - defaultSol: {fileID: 2100000, guid: 56c3a3615619c6641b8f1b1daeb39366, type: 2}
+  - defaultLa: {fileID: 2100000, guid: 8745f4603b1fc0c4bb8e2addb645e75a, type: 2}
+  - defaultSi: {fileID: 2100000, guid: ad4cdab8fc9e9d640ba0519095792a5b, type: 2}
+  - NatalDo: {fileID: 2100000, guid: c43982235a7a4b84ba62e98f5db40ae5, type: 2}
+  - NatalRe: {fileID: 2100000, guid: 303a438913d0f3645b866b70cb900f08, type: 2}
+  - NatalMi: {fileID: 2100000, guid: 1de649b9163fed646806043a80bdca60, type: 2}
+  - NatalFa: {fileID: 2100000, guid: 652f2968cc0d79340909cb2772dfb3ef, type: 2}
+  - NatalSol: {fileID: 2100000, guid: a1ae2bdcd9e42364584d236b73d6789c, type: 2}
+  - NatalLa: {fileID: 2100000, guid: 17c3753164846da46a5a48436e093477, type: 2}
+  - NatalSi: {fileID: 2100000, guid: 52f117ad239c10f48a9ccb23273c7590, type: 2}
+  - HalloweenDo: {fileID: 2100000, guid: 4cc3d727f00dd1745965bd7c7f0efef7, type: 2}
+  - HalloweenRe: {fileID: 2100000, guid: b3b84511ed60ae247b66c2aba6094457, type: 2}
+  - HalloweenMi: {fileID: 2100000, guid: e7bae49fadbee154e921079825001b3a, type: 2}
+  - HalloweenFa: {fileID: 2100000, guid: c0fe2623ebfe9a7468cdca6e8c497792, type: 2}
+  - HalloweenSol: {fileID: 2100000, guid: 1a9fcfe2784a85e49b066baeb22a3ced, type: 2}
+  - HalloweenLa: {fileID: 2100000, guid: 0847e38e66928894e97af21e38a3019c, type: 2}
+  - HalloweenSi: {fileID: 2100000, guid: 9172632f0c0f0ed4aa6871200f17323b, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 

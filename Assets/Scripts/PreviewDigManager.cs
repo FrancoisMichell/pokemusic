@@ -4,27 +4,27 @@ using System.Collections;
 public class PreviewDigManager : MonoBehaviour {
 
     public Material[] materiaisDigs;
-    
+    public int[] precos;
+
+    public TextMesh preco;
 
     public Material DefaultDig;
     public Material NatalDig;
     public Material HalloweenDig;
 
-
     private bool block;
     private int indexDig = 0;
 
-    private string situacaoDefaultDig;
-    private string situacaoNoiteDig;
-    private string situacaoHalloweenDig;
+    private string situacaoDefaultDig = "comprado";
+    private string situacaoNoiteDig = "nao comprado";
+    private string situacaoHalloweenDig = "nao comprado";
 
     public GameObject btComprarDig;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start() {
         block = false;
 
-        situacaoDefaultDig = PlayerPrefs.GetString("defaultDig", "");
         situacaoNoiteDig = PlayerPrefs.GetString("noiteDig", "");
         situacaoHalloweenDig = PlayerPrefs.GetString("halloweenDig", "");
 
@@ -32,19 +32,24 @@ public class PreviewDigManager : MonoBehaviour {
         materiaisDigs[0] = DefaultDig;
         materiaisDigs[1] = NatalDig;
         materiaisDigs[2] = HalloweenDig;
-        
-	}
-	
-	// Update is called once per frame
-	void Update () {
+
+        precos = new int[3];
+        precos[0] = 00;
+        precos[1] = 20;
+        precos[2] = 30;
+        verificaSituacao(0);
+    }
+
+    // Update is called once per frame
+    void Update() {
         if (Input.GetMouseButton(0)) {
-            
+
 
             Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Collider2D[] col = Physics2D.OverlapPointAll(pos);
-            
+
             if (col.Length > 0 && block == false) {
-             
+
                 foreach (Collider2D c in col) {
 
                     if (c.CompareTag("leftDigg")) {
@@ -60,12 +65,16 @@ public class PreviewDigManager : MonoBehaviour {
                         alteraDigg(indexDig);
                         alterasituacao(indexDig);
                         Invoke("Unblock", 0.2f);
+                        // Apagar essa linha quando a tela de confirmação for implementada, ou a verificação da quantidade de 
+                        //moedas
+                        btComprarDig.SetActive(false);
+
                     }
                 }
-            }   
+            }
         }
 
-	}
+    }
 
     private void alteraDigg(int index) {
         if (index == 0) {
@@ -77,7 +86,7 @@ public class PreviewDigManager : MonoBehaviour {
         }
     }
 
- 
+
     private void mudarDigLeft() {
         if (indexDig == 0) {
             indexDig = 2;
@@ -99,15 +108,16 @@ public class PreviewDigManager : MonoBehaviour {
         }
         verificaSituacao(indexDig);
         MudaDig(indexDig);
-    }   
+    }
 
     private void Unblock() {
         block = false;
     }
-   
+
 
     private void MudaDig(int index) {
         renderer.material = materiaisDigs[indexDig];
+        preco.text = precos[indexDig].ToString();
 
     }
 
@@ -127,11 +137,7 @@ public class PreviewDigManager : MonoBehaviour {
 
     private void verificaSituacao(int index) {
         if (index == 0) {
-            if (situacaoDefaultDig == "comprado") {
-                btComprarDig.SetActive(false);
-            } else {
-                btComprarDig.SetActive(true);
-            }
+            btComprarDig.SetActive(false);
         } else if (index == 1) {
             if (situacaoNoiteDig == "comprado") {
                 btComprarDig.SetActive(false);
