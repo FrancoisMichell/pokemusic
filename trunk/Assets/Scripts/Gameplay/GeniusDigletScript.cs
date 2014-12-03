@@ -36,10 +36,6 @@ public class GeniusDigletScript : MonoBehaviour {
     private GameObject geniusCamera;
     private GameObject maquinaGenius;
 
-
-    private string diggsAtuais;
-
-
     // Use this for initialization
     void Start() {
         digletDo = transform.FindChild("diglettDo");
@@ -49,19 +45,6 @@ public class GeniusDigletScript : MonoBehaviour {
         digletSol = transform.FindChild("diglettSol");
         digletLa = transform.FindChild("diglettLa");
         digletSi = transform.FindChild("diglettSi");
-
-
-        diggsAtuais = PlayerPrefs.GetString("dig", "");
-
-        digletDo.renderer.material = Resources.LoadAssetAtPath<Material>("Assets/Material/Diggs/diglet" + diggsAtuais + "Do.mat");
-        digletRe.renderer.material = Resources.LoadAssetAtPath<Material>("Assets/Material/Diggs/diglet" + diggsAtuais + "Re.mat");
-        digletMi.renderer.material = Resources.LoadAssetAtPath<Material>("Assets/Material/Diggs/diglet" + diggsAtuais + "Mi.mat");
-        digletFa.renderer.material = Resources.LoadAssetAtPath<Material>("Assets/Material/Diggs/diglet" + diggsAtuais + "Fa.mat");
-        digletSol.renderer.material = Resources.LoadAssetAtPath<Material>("Assets/Material/Diggs/diglet" + diggsAtuais + "Sol.mat");
-        digletLa.renderer.material = Resources.LoadAssetAtPath<Material>("Assets/Material/Diggs/diglet" + diggsAtuais + "La.mat");
-        digletSi.renderer.material = Resources.LoadAssetAtPath<Material>("Assets/Material/Diggs/diglet" + diggsAtuais + "Si.mat");
-
-
 
         objectController = GameObject.FindGameObjectWithTag("Launcher");
         geniusCamera = GameObject.FindGameObjectWithTag("MainCamera");
