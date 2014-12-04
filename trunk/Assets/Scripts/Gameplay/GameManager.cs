@@ -6,12 +6,14 @@ public class GameManager : MonoBehaviour {
 
     private bool _paused;
     private GameObject digglets;
-    public GameObject btPausa, btPlay;
+    public GameObject btPausa, btPlay, telaPausa;
 
     // Use this for initialization
     void Start() {
         Time.timeScale = 1f;
         _paused = false;
+
+        telaPausa.SetActive(false);
 
         digglets = GameObject.FindGameObjectWithTag("digglets");
 
@@ -51,12 +53,14 @@ public class GameManager : MonoBehaviour {
 
     void Pause() {
         _paused = true;
+        telaPausa.SetActive(true);
         btPausa.SetActive(false);
         Time.timeScale = 0f;
         digglets.SendMessage("Pausar");
     }
     void Continue() {
         btPausa.SetActive(true);
+        telaPausa.SetActive(false);
         _paused = false;
         Time.timeScale = 1f;
         digglets.SendMessage("Continuar");
