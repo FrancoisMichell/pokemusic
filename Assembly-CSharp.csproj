@@ -57,7 +57,7 @@
      <Compile Include="Assets\Scripts\Gameplay\InfinityDigletScript.cs" />
      <Compile Include="Assets\Scripts\Gameplay\Levels.cs" />
      <Compile Include="Assets\Scripts\Gameplay\MaquinaGenius.cs" />
-     <Compile Include="Assets\Scripts\Gameplay\MaterialDigsManager.cs" />
+     <Compile Include="Assets\Scripts\Gameplay\MaterialsManager.cs" />
      <Compile Include="Assets\Scripts\Gameplay\ObjectBehavior.cs" />
      <Compile Include="Assets\Scripts\Gameplay\ObjectController.cs" />
      <Compile Include="Assets\Scripts\Gameplay\pitchScript.cs" />
@@ -73,15 +73,6 @@
      <Compile Include="Assets\Scripts\ScriptsNotas\notaSi.cs" />
      <Compile Include="Assets\Scripts\ScriptsNotas\notaSol.cs" />
      <Compile Include="Assets\Scripts\cameraScript.cs" />
-     <None Include="Assets\Plugins\Android\unityads\proguard-project.txt" />
-     <None Include="Assets\Plugins\Android\unityads\build.xml" />
-     <None Include="Assets\link.xml" />
-     <None Include="Assets\Plugins\Android\unityads\res\values\strings.xml" />
-     <None Include="Assets\Plugins\Android\unityads\AndroidManifest.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{722B2CFF-5DCB-D160-7C3A-519A8074633A}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

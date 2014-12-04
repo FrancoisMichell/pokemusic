@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MaterialDigsManager : MonoBehaviour {
+public class MaterialsManager : MonoBehaviour {
 
     private Transform digletDo, digletRe, digletMi, digletFa, digletSol, digletLa, digletSi;
 
@@ -30,6 +30,8 @@ public class MaterialDigsManager : MonoBehaviour {
     public Material HalloweenSi;
 
     private string atualDigg;
+
+    public Material grama, lapides;
 
     // Use this for initialization
     void Start() {
@@ -72,14 +74,9 @@ public class MaterialDigsManager : MonoBehaviour {
             digletSi.renderer.material = HalloweenSi;
 
         }
-
-
-
-
     }
 
     // Update is called once per frame
     void Update() {
-        print(atualDigg);
     }
 }

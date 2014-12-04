@@ -20,7 +20,11 @@ public class PreviewManager : MonoBehaviour {
     private string testando;
 
     public GameObject btComprar;
+    
     public GameObject grass;
+    
+    public Sprite grama;
+    public Sprite gramaEscura;
 
     //private string situacaoDefault = "comprado";
     private string situacaoNoite = "nao comprado";
@@ -43,6 +47,8 @@ public class PreviewManager : MonoBehaviour {
         situacaoHalloween = PlayerPrefs.GetString("halloween", "");
 
         verificaSituacao(0);
+
+        //grass.renderer.material = gramaEscura;
     }
 
     // Update is called once per frame
@@ -142,9 +148,9 @@ public class PreviewManager : MonoBehaviour {
     private void MudaBg(int index) {
         renderer.material = materiaisFundo[index];
 
-        if (index == 2) {
-            grass.SetActive(false);
-        } else grass.SetActive(true);
+        //if (index == 2) {
+        //    grass.SetActive(false);
+        //} else grass.SetActive(true);
 
         preco.text = precos[index].ToString();
     }
