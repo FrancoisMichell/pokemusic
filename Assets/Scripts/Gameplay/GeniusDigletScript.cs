@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Advertisements;
+
 
 public class GeniusDigletScript : MonoBehaviour {
 
@@ -9,6 +11,7 @@ public class GeniusDigletScript : MonoBehaviour {
     //sequencia de strings enviadas pelo objectController 
     private List<string> sequencia = new List<string>();
     private bool touch;
+	private bool adsShowing = false;
     //o indice da lista de sequencias que esta sendo usado atualmente
     private int posicaoSequencia = 0;
     private int tamanhoSequencia = 1;
@@ -50,6 +53,8 @@ public class GeniusDigletScript : MonoBehaviour {
         geniusCamera = GameObject.FindGameObjectWithTag("MainCamera");
         //A maquina do modo Genius esta setada com a tag "BarraSom"
         maquinaGenius = GameObject.FindGameObjectWithTag("BarraSom");
+		//inicializar propaganda
+		Advertisement.Initialize ("20713");//esse numero e o id do jogo no unityads
 
         listadiglets.Add(digletDo);
         listadiglets.Add(digletRe);
@@ -65,62 +70,82 @@ public class GeniusDigletScript : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update() {
-        // codigo usado para visualização na unity
-
-        //caso o indice da sequencia que esta sendo considerada neste momento for igual ao tamanho da lista de sequencias
-        //entao ele vai mostrar o "bom trabalho" e pedir uma nova sequencia
-        if (posicaoSequencia == sequencia.Count) {
-            this.barraStatus1.transform.position = new Vector3(barraStatus2.transform.position.x, barraStatus2.transform.position.y, -5);
-            posicaoSequencia = 0;
-
-
-            //objectController.SendMessage("startPlay");
-            //esse 3 significa que ele ira esperar 3 segundos para ser executado
-            Invoke("pedirSequencia", 1f);
-
-
-        }
-        if (pausado == false) {
-
-            if (Input.GetMouseButtonDown(0) && touch == true && toque < sequencia.Count) {
-
-                Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                Collider2D[] col = Physics2D.OverlapPointAll(pos);
-
-                if (col.Length > 0) {
-                    foreach (Collider2D c in col) {
-                        //comparacao para saber se o nome do objeto clicado e igual a string que esta na posicao da sequencia atual
-                        if (c.name.Equals(sequencia[posicaoSequencia])) {
-                            posicaoSequencia += 1;
-                            toque += 1;
-                            PlayerScored();
-                        } else if (c.CompareTag("BtJogar")) {
-                            Application.LoadLevel(Application.loadedLevel);
-                        } else if (c.CompareTag("BtMenu")) {
-                            Application.LoadLevel("Menu");
-                        } else if (c.CompareTag("colPausa")) {
-                            break;
-                        }
-
-
-                          //caso nao esteja, sera exibido o "FAIL" e sera gerada uma sequencia do zero novamente    
-                        else {
-                            barraStatus2.transform.position = new Vector3(barraStatus1.transform.position.x, barraStatus1.transform.position.y, -5);
-                            posicaoSequencia = 0;
-                            //objectController.SendMessage("startPlay");
-                            //esse 1 significa que ele ira esperar 3 segundos para ser executado
-                            Invoke("moverCamera", 1);
-                            Invoke("desativarMaquina", 2);
-
-                        }
-                        Hitdiglet(c.transform);
-                    }
-                }
-            }
-        }
-
-    }
+	void Update() {
+		// codigo usado para visualização na unity
+		
+		//caso o indice da sequencia que esta sendo considerada neste momento for igual ao tamanho da lista de sequencias
+		//entao ele vai mostrar o "bom trabalho" e pedir uma nova sequencia
+		if (posicaoSequencia == sequencia.Count) {
+			this.barraStatus1.transform.position = new Vector3(barraStatus2.transform.position.x, barraStatus2.transform.position.y, -5);
+			posicaoSequencia = 0;
+			
+			
+			//objectController.SendMessage("startPlay");
+			//esse 3 significa que ele ira esperar 3 segundos para ser executado
+			Invoke("pedirSequencia", 1f);
+			
+			
+		}
+		if (pausado == false) {
+			
+			if (Input.GetMouseButtonDown(0) && touch == true && toque < sequencia.Count) {
+				
+				Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+				Collider2D[] col = Physics2D.OverlapPointAll(pos);
+				
+				if (col.Length > 0) {
+					foreach (Collider2D c in col) {
+						//comparacao para saber se o nome do objeto clicado e igual a string que esta na posicao da sequencia atual
+						if (c.name.Equals(sequencia[posicaoSequencia])) {
+							posicaoSequencia += 1;
+							toque += 1;
+							PlayerScored();
+						} else if (c.CompareTag("BtJogar")) {
+							addMoedas();
+							Application.LoadLevel(Application.loadedLevel);
+						} else if (c.CompareTag("BtMenu")) {
+							addMoedas();
+							Application.LoadLevel("Menu");
+						} else if (c.CompareTag("colPausa")) {
+							break;
+						}
+						else if(c.CompareTag("Up")){}
+						//parte propaganda
+						else if (c.CompareTag("Ads")) {
+							print ("kl");
+							adsShowing = true;
+							Advertisement.Show(null, new ShowOptions {
+								pause = true,
+								resultCallback = result => {
+									adsShowing = false;
+									if (result == ShowResult.Finished) {
+										
+										_moedas = _moedas*2;
+										
+									}
+								}
+							});
+						}
+						
+						
+						
+						//caso nao esteja, sera exibido o "FAIL" e sera gerada uma sequencia do zero novamente    
+						else {
+							barraStatus2.transform.position = new Vector3(barraStatus1.transform.position.x, barraStatus1.transform.position.y, -5);
+							posicaoSequencia = 0;
+							//objectController.SendMessage("startPlay");
+							//esse 1 significa que ele ira esperar 3 segundos para ser executado
+							Invoke("moverCamera", 1);
+							Invoke("desativarMaquina", 2);
+							
+						}
+						Hitdiglet(c.transform);
+					}
+				}
+			}
+		}
+		
+	}
     //Codigo para multitoque. Esta comentado, pois so funciona no smartphone 
 
     //		Touch myTouch = Input.GetTouch(0);
@@ -144,10 +169,14 @@ public class GeniusDigletScript : MonoBehaviour {
         a.rigidbody2D.gravityScale = -5;
     }
 
-    void Hitdiglet(Transform b) {
-        b.audio.Play();
-        b.rigidbody2D.velocity = Vector3.down * 10;
-    }
+	void Hitdiglet(Transform b) {
+		if (b.CompareTag("Ads")){}
+		else{
+			b.audio.Play();
+			b.rigidbody2D.velocity = Vector3.down * 10;
+		}
+		
+	}
 
     public void downDigglets() {
         foreach (Transform i in listadiglets) {
@@ -182,7 +211,7 @@ public class GeniusDigletScript : MonoBehaviour {
         Score2.text = "" + _score;
 
         contaPontos++;
-        if (contaPontos > 9) {
+        if (contaPontos > 1) {
             _moedas += 1;
             contaPontos = 0;
             addMoedas();
