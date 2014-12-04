@@ -1,17 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.Advertisements;
+//using UnityEngine.Advertisements;
 
 
 public class GeniusDigletScript : MonoBehaviour {
 
     private Transform digletDo, digletRe, digletMi, digletFa, digletSol, digletLa, digletSi;
     private List<Transform> listadiglets = new List<Transform>();
+   
     //sequencia de strings enviadas pelo objectController 
     private List<string> sequencia = new List<string>();
     private bool touch;
-	private bool adsShowing = false;
+	//private bool adsShowing = false;
+    
     //o indice da lista de sequencias que esta sendo usado atualmente
     private int posicaoSequencia = 0;
     private int tamanhoSequencia = 1;
@@ -31,7 +33,11 @@ public class GeniusDigletScript : MonoBehaviour {
     public int _moedas;
 
     public int moedasTotais;
-    private int contaPontos;
+    private int contaMoedas;
+    public TextMesh moedasGanhas;
+
+
+    public TextMesh NivelAtual;
 
     private int toque;
     private bool pausado;
@@ -54,7 +60,8 @@ public class GeniusDigletScript : MonoBehaviour {
         //A maquina do modo Genius esta setada com a tag "BarraSom"
         maquinaGenius = GameObject.FindGameObjectWithTag("BarraSom");
 		//inicializar propaganda
-		Advertisement.Initialize ("20713");//esse numero e o id do jogo no unityads
+		
+        //Advertisement.Initialize ("20713");//esse numero e o id do jogo no unityads
 
         listadiglets.Add(digletDo);
         listadiglets.Add(digletRe);
@@ -71,6 +78,7 @@ public class GeniusDigletScript : MonoBehaviour {
 
     // Update is called once per frame
 	void Update() {
+        print (PlayerPrefs.GetInt("moedas", _moedas + moedasTotais));
 		// codigo usado para visualização na unity
 		
 		//caso o indice da sequencia que esta sendo considerada neste momento for igual ao tamanho da lista de sequencias
@@ -82,10 +90,10 @@ public class GeniusDigletScript : MonoBehaviour {
 			
 			//objectController.SendMessage("startPlay");
 			//esse 3 significa que ele ira esperar 3 segundos para ser executado
-			Invoke("pedirSequencia", 1f);
-			
-			
+			Invoke("pedirSequencia", 1f);			
 		}
+        NivelAtual.text = tamanhoSequencia.ToString();
+
 		if (pausado == false) {
 			
 			if (Input.GetMouseButtonDown(0) && touch == true && toque < sequencia.Count) {
@@ -109,23 +117,23 @@ public class GeniusDigletScript : MonoBehaviour {
 						} else if (c.CompareTag("colPausa")) {
 							break;
 						}
-						else if(c.CompareTag("Up")){}
-						//parte propaganda
-						else if (c.CompareTag("Ads")) {
-							print ("kl");
-							adsShowing = true;
-							Advertisement.Show(null, new ShowOptions {
-								pause = true,
-								resultCallback = result => {
-									adsShowing = false;
-									if (result == ShowResult.Finished) {
+                        //else if(c.CompareTag("Up")){}
+                        ////parte propaganda
+                        //else if (c.CompareTag("Ads")) {
+                        //    print ("kl");
+                        //    adsShowing = true;
+                        //    Advertisement.Show(null, new ShowOptions {
+                        //        pause = true,
+                        //        resultCallback = result => {
+                        //            adsShowing = false;
+                        //            if (result == ShowResult.Finished) {
 										
-										_moedas = _moedas*2;
+                        //                _moedas = _moedas*2;
 										
-									}
-								}
-							});
-						}
+                        //            }
+                        //        }
+                        //    });
+                        //}
 						
 						
 						
@@ -137,7 +145,7 @@ public class GeniusDigletScript : MonoBehaviour {
 							//esse 1 significa que ele ira esperar 3 segundos para ser executado
 							Invoke("moverCamera", 1);
 							Invoke("desativarMaquina", 2);
-							
+                            Invoke("contarMoedas", 2.3f);
 						}
 						Hitdiglet(c.transform);
 					}
@@ -157,6 +165,14 @@ public class GeniusDigletScript : MonoBehaviour {
     //
     //			}
     //		}
+
+    public void contarMoedas() {
+        if (_score > contaMoedas) {
+            contaMoedas++;
+        }
+        moedasGanhas.text = contaMoedas.ToString();
+        Invoke("contarMoedas", 0.2f);
+    }
 
     public void Upall() {
         foreach (Transform i in listadiglets) {
@@ -210,14 +226,8 @@ public class GeniusDigletScript : MonoBehaviour {
         Score.text = "" + _score;
         Score2.text = "" + _score;
 
-        contaPontos++;
-        if (contaPontos > 1) {
-            _moedas += 1;
-            contaPontos = 0;
-            addMoedas();
-        }
-
-        Moedas.text = "" + _moedas;
+        _moedas++;
+        addMoedas();
 
         if (_score > _hiscore) {
             _hiscore = _score;
