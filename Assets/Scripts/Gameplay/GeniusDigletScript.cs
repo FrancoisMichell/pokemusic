@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-//using UnityEngine.Advertisements;
+using UnityEngine.Advertisements;
 
 
 public class GeniusDigletScript : MonoBehaviour {
@@ -12,7 +12,7 @@ public class GeniusDigletScript : MonoBehaviour {
     //sequencia de strings enviadas pelo objectController 
     private List<string> sequencia = new List<string>();
     private bool touch;
-	//private bool adsShowing = false;
+	private bool adsShowing = false;
     
     //o indice da lista de sequencias que esta sendo usado atualmente
     private int posicaoSequencia = 0;
@@ -60,8 +60,9 @@ public class GeniusDigletScript : MonoBehaviour {
         //A maquina do modo Genius esta setada com a tag "BarraSom"
         maquinaGenius = GameObject.FindGameObjectWithTag("BarraSom");
 		//inicializar propaganda
-		
-        //Advertisement.Initialize ("20713");//esse numero e o id do jogo no unityads
+
+		Advertisement.Initialize ("20709");//esse numero e o id do jogo no unityads
+
 
         listadiglets.Add(digletDo);
         listadiglets.Add(digletRe);
@@ -117,23 +118,24 @@ public class GeniusDigletScript : MonoBehaviour {
 						} else if (c.CompareTag("colPausa")) {
 							break;
 						}
-                        //else if(c.CompareTag("Up")){}
-                        ////parte propaganda
-                        //else if (c.CompareTag("Ads")) {
-                        //    print ("kl");
-                        //    adsShowing = true;
-                        //    Advertisement.Show(null, new ShowOptions {
-                        //        pause = true,
-                        //        resultCallback = result => {
-                        //            adsShowing = false;
-                        //            if (result == ShowResult.Finished) {
+                        else if(c.CompareTag("Up")){}
+                        //parte propaganda
+                        else if (c.CompareTag("Ads")) {
+                            print ("kl");
+                            adsShowing = true;
+                            Advertisement.Show(null, new ShowOptions {
+                                pause = true,
+                                resultCallback = result => {
+                                    adsShowing = false;
+                                    if (result == ShowResult.Finished) {
+								
+                                        _moedas = _moedas*2;
 										
-                        //                _moedas = _moedas*2;
-										
-                        //            }
-                        //        }
-                        //    });
-                        //}
+                                    }
+                                }
+                            });
+							contarMoedas();
+                        }
 						
 						
 						
