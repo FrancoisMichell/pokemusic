@@ -88,7 +88,7 @@ public class ObjectController : MonoBehaviour {
 	void Update () {
 		// aqui faz a comparaçao e identifica que o ultimo objeto foi lancado
 		//metodo finish play faz com que a sequencia nao se repita
-		if (nuvem [nuvem.Count - 1].transform.position.x < -4f) {
+		if (nuvem [nuvem.Count - 1].transform.position.x < -10f) {
 			this.finishPlay ();
 
 		}
