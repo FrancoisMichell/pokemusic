@@ -6,13 +6,7 @@ public class InfinityDigletScript : MonoBehaviour {
 
 	private Transform digletDo, digletRe, digletMi, digletFa, digletSol, digletLa, digletSi;
 	private List<Transform> listadiglets = new List<Transform>();
-	private GameObject destinoDo;
-	private GameObject destinoRe;
-	private GameObject destinoMi;
-	private GameObject destinoFa;
-	private GameObject destinoSol;
-	private GameObject destinoLa;
-	private GameObject destinoSi;
+	private GameObject destino;
 	private bool touch;
 		
 	// Use this for initialization
@@ -25,14 +19,7 @@ public class InfinityDigletScript : MonoBehaviour {
 		digletLa = transform.FindChild ("diglettLa");
 		digletSi = transform.FindChild ("diglettSi");
 
-		destinoDo = GameObject.FindGameObjectWithTag ("nuvemDo");
-		destinoRe = GameObject.FindGameObjectWithTag ("nuvemRe");
-		destinoMi = GameObject.FindGameObjectWithTag ("nuvemMi");
-		destinoFa = GameObject.FindGameObjectWithTag ("nuvemFa");
-		destinoSol = GameObject.FindGameObjectWithTag ("nuvemSol");
-		destinoLa = GameObject.FindGameObjectWithTag ("nuvemLa");
-		destinoSi = GameObject.FindGameObjectWithTag ("nuvemSi");
-
+		destino = GameObject.FindGameObjectWithTag ("Launcher");
 
 		listadiglets.Add (digletDo);
 		listadiglets.Add (digletRe);
@@ -50,7 +37,6 @@ public class InfinityDigletScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 // codigo usado para visualização na unity
-
 		foreach (Transform d in listadiglets){
 			Quaternion angulo = new Quaternion();
 			angulo.Set(0f,0f,0f,0f);
@@ -58,15 +44,13 @@ public class InfinityDigletScript : MonoBehaviour {
 			
 		}
 
-		if (Input.GetMouseButton(0) && touch == true) {
+		if (Input.GetMouseButtonDown(0) && touch == true) {
 			Vector2 pos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
 			Collider2D[] col = Physics2D.OverlapPointAll (pos);		
 
 			if(col.Length > 0)
 				foreach (Collider2D c in col){
-
 					Hitdiglet(c.transform);
-
 				}
 			}
 
@@ -97,31 +81,7 @@ public class InfinityDigletScript : MonoBehaviour {
 	void Hitdiglet(Transform b){
 		b.audio.Play ();
 		b.rigidbody2D.velocity = Vector3.down * 10;
-
-		switch (b.name) {
-		case "diglettDo":
-				destinoDo.SendMessage (b.name);	
-				break;
-		case "diglettRe":
-			destinoRe.SendMessage (b.name);	
-				break;
-		case "diglettMi":
-			destinoMi.SendMessage (b.name);	
-				break;
-		case "diglettFa":
-			destinoFa.SendMessage (b.name);	
-				break;
-		case "diglettSol":
-			destinoSol.SendMessage (b.name);	
-				break;
-		case "diglettLa":
-			destinoLa.SendMessage (b.name);	
-				break;
-		case "diglettSi":
-			destinoSi.SendMessage (b.name);	
-				break;
-
-		}
+		destino.SendMessage ("lancar", b.name);
 	}
 
 	public void downDigglets(){

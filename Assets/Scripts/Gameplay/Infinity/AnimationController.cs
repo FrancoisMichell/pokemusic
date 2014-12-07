@@ -3,11 +3,9 @@ using System.Collections;
 
 public class AnimationController : MonoBehaviour {
 
-	private Animator notaMusical;
-
+	public GameObject nuvemDo, nuvemRe, nuvemMi, nuvemFa, nuvemSol, nuvemLa, nuvemSi;
 	// Use this for initialization
 	void Start () {
-		notaMusical = GetComponent<Animator> ();
 
 	}
 	
@@ -16,31 +14,32 @@ public class AnimationController : MonoBehaviour {
 	
 	}
 
-	void diglettLa(){
-		notaMusical.SetTrigger("apertarLa");
-	}
-	
-	void diglettDo(){
-		notaMusical.SetTrigger("apertarDo");
-	}
-	
-	void diglettRe(){
-		notaMusical.SetTrigger("apertarRe");
-	}
+	void lancar(string nota){
 
-	void diglettMi(){
-		notaMusical.SetTrigger("apertarMi");
-	}
-	
-	void diglettFa(){
-		notaMusical.SetTrigger("apertarFa");
-	}
+		GameObject nuvemAtual;
 
-	void diglettSol(){
-		notaMusical.SetTrigger("apertarSol");
-	}
+		if (nota.Equals ("diglettDo")) {
+			nuvemAtual = Instantiate (nuvemDo) as GameObject;
+		}
+		else if (nota.Equals ("diglettRe")) {
+			nuvemAtual = Instantiate (nuvemRe) as GameObject;
+		}
+		else if (nota.Equals ("diglettMi")) {
+			nuvemAtual = Instantiate (nuvemMi) as GameObject;
+		}
+		else if (nota.Equals ("diglettFa")) {
+			nuvemAtual = Instantiate (nuvemFa) as GameObject;
+		}
+		else if (nota.Equals ("diglettSol")) {
+			nuvemAtual = Instantiate (nuvemSol) as GameObject;
+		}
+		else if (nota.Equals ("diglettLa")) {
+			nuvemAtual = Instantiate (nuvemLa) as GameObject;
+		}
+		else{
+			nuvemAtual = Instantiate (nuvemSi) as GameObject;
+		}
+		print (nuvemAtual);
 
-	void diglettSi(){
-		notaMusical.SetTrigger("apertarSi");
 	}
 }

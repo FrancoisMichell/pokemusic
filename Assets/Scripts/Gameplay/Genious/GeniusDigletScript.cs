@@ -78,6 +78,14 @@ public class GeniusDigletScript : MonoBehaviour {
 
     // Update is called once per frame
 	void Update() {
+
+		foreach (Transform d in listadiglets){
+			Quaternion angulo = new Quaternion();
+			angulo.Set(0f,0f,0f,0f);
+			d.rotation = angulo;
+			
+		}
+
         print (PlayerPrefs.GetInt("moedas", _moedas + moedasTotais));
 		// codigo usado para visualização na unity
 		
