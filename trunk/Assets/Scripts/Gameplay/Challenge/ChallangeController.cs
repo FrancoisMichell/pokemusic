@@ -54,6 +54,7 @@ public class ChallangeController : MonoBehaviour {
 		if (nota.Equals ("diglettDo")) {
 			nuvemAtual = Instantiate (nuvemDo) as GameObject;
 		}
+
 		else if (nota.Equals ("diglettRe")) {
 			nuvemAtual = Instantiate (nuvemRe) as GameObject;
 		}
