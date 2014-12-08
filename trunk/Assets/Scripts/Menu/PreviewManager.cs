@@ -30,6 +30,9 @@ public class PreviewManager : MonoBehaviour {
     private GameObject moeda;
     private int quantMoedas;
 
+	public GameObject balaoPobre;
+	public GameObject balaoComprado;
+
 
     // Use this for initialization
     void Start() {
@@ -37,7 +40,6 @@ public class PreviewManager : MonoBehaviour {
 
         situacaoNoite = PlayerPrefs.GetString("noite", "");
         situacaoHalloween = PlayerPrefs.GetString("halloween", "");
-        
 
         quantMoedas = PlayerPrefs.GetInt("moedas", 0);
 
@@ -61,7 +63,7 @@ public class PreviewManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (Input.GetMouseButton(0)) {
+        if (Input.GetMouseButtonDown(0)) {
 
 
             Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -82,9 +84,11 @@ public class PreviewManager : MonoBehaviour {
 
                     if (c.CompareTag("ComprarFundo")) {
                         block = true;
-                        if (index == 1 && situacaoNoite == "nao comprado") {
+						print (index);
+						print (situacaoNoite);
+                        if (index == 1 && situacaoNoite == "") {
                             Comprar(index);
-                        } else if (index == 2 && situacaoHalloween == "nao comprado") {
+                        } else if (index == 2 && situacaoHalloween == "") {
                             Comprar(index);
                         }
 
@@ -114,11 +118,22 @@ public class PreviewManager : MonoBehaviour {
             PlayerPrefs.SetInt("fundo", index);
             alterasituacao(index);
             btComprar.SetActive(false);
+			balaoComprado.transform.position = new Vector3(balaoComprado.transform.position.x, balaoComprado.transform.position.y, -1);
             moeda.SendMessage("comprar", precos[index]);
+			Invoke("balaoAtras", 2f);
         } else {
+			print ("aqui");
+			balaoPobre.transform.position = new Vector3(balaoPobre.transform.position.x, balaoPobre.transform.position.y, -1);
             print("nao tem dinheiro");
+			Invoke("balaoAtras", 2f);
         }
     }
+
+	public void balaoAtras(){
+		balaoPobre.transform.position = new Vector3(balaoPobre.transform.position.x, balaoPobre.transform.position.y, 1);
+		balaoComprado.transform.position = new Vector3(balaoComprado.transform.position.x, balaoComprado.transform.position.y, 1);
+		
+	}
 
     private void alterasituacao(int index) {
         if (index == 1) {

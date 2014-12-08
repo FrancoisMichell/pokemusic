@@ -7,13 +7,13 @@ public class PlayScript : MonoBehaviour {
 
     void Start() {
 
-       cam = GameObject.FindGameObjectWithTag("MainCamera");
+       //cam = GameObject.FindGameObjectWithTag("MainCamera");
     }
 
     // Update is called once per frame
     void Update() {
 
-        if (Input.GetMouseButton(0)) {
+        if (Input.GetMouseButtonDown(0)) {
 
             Vector2 vetor = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Collider2D[] sprites = Physics2D.OverlapPointAll(vetor);

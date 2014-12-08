@@ -1,11 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Menu\PlayScript.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Menu\SceneTransition.cs">
     <Files>
-      <File FileName="Assets\Scripts\Gameplay\Infinity\AnimationController.cs" Line="50" Column="22" />
-      <File FileName="Assets\Scripts\Gameplay\Challenge\CloudChallengeScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Gameplay\Challenge\ChallangeController.cs" Line="78" Column="92" />
-      <File FileName="Assets\Scripts\Menu\PlayScript.cs" Line="10" Column="8" />
+      <File FileName="Assets\Scripts\Menu\PlayScript.cs" Line="10" Column="10" />
+      <File FileName="Assets\Scripts\Menu\PreviewManager.cs" Line="43" Column="3" />
+      <File FileName="Assets\Scripts\Menu\PreviewDigManager.cs" Line="73" Column="36" />
+      <File FileName="Assets\Scripts\Menu\SceneTransition.cs" Line="19" Column="20" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
