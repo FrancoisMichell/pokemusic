@@ -23,7 +23,8 @@ public class PreviewDigManager : MonoBehaviour {
 
     private int quantMoedas;
     private GameObject moedas;
-
+	public GameObject balaoPobre;
+	public GameObject balaoComprado;
 
     // Use this for initialization
     void Start() {
@@ -68,14 +69,15 @@ public class PreviewDigManager : MonoBehaviour {
                         Invoke("mudarDigRight", 0.1f);
                     }
                     if (c.CompareTag("ComprarDigg")) {
-                        block = true;
+						block = true;
+						print (situacaoHalloweenDig);
                         if (indexDig == 1 && situacaoNoiteDig == "nao comprado") {
                             Comprar(indexDig);
                             
                         } else if (indexDig == 2 && situacaoHalloweenDig == "nao comprado") {
                             Comprar(indexDig);
                             
-                        } else print("mopa");
+                        }
 
 
                         if (indexDig == 1 && situacaoNoiteDig == "comprado") {
@@ -100,11 +102,21 @@ public class PreviewDigManager : MonoBehaviour {
         if (quantMoedas >= precos[indexDig]) {
             alterasituacao(indexDig);
             btComprarDig.SetActive(false);
+			balaoComprado.transform.position = new Vector3(balaoComprado.transform.position.x, balaoComprado.transform.position.y, -1);
             moedas.SendMessage("comprar", precos[indexDig]);
+			Invoke("balaoAtras", 2f);
         } else {
+			balaoPobre.transform.position = new Vector3(balaoPobre.transform.position.x, balaoPobre.transform.position.y, -1);
+			Invoke("balaoAtras", 2f);
             print("nao tem dinheiro");
         }
     }
+
+	public void balaoAtras(){
+		balaoPobre.transform.position = new Vector3(balaoPobre.transform.position.x, balaoPobre.transform.position.y, 1);
+		balaoComprado.transform.position = new Vector3(balaoComprado.transform.position.x, balaoComprado.transform.position.y, 1);
+	
+	}
 
     private void alterasituacao(int index) {
         if (index == 0) {

@@ -11,13 +11,14 @@ public class SceneTransition : MonoBehaviour {
     // Use this for initialization
     void Start() {
         
+		atual = "";
         cam = GameObject.FindGameObjectWithTag("MainCamera");
     }
 
     // Update is called once per frame
     void Update() {
 
-        if (Input.GetMouseButton(0)) {
+        if (Input.GetMouseButtonDown(0) && !atual.Equals("paraLoja")) {
             Vector2 vetor = cam.camera.ScreenToWorldPoint(Input.mousePosition);
             Collider2D[] sprites = Physics2D.OverlapPointAll(vetor);
 
