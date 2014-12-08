@@ -6,6 +6,8 @@ public class BackgroundManager : MonoBehaviour
 	public float speed;
 	private float _offSet;
 
+	public ParticleSystem neve;  
+
     public Material Default;
     public Material Noite;
     public Material Halloween;
@@ -25,6 +27,13 @@ public class BackgroundManager : MonoBehaviour
         renderer.material.mainTextureOffset = Vector2.zero;
 
         bgAtual = PlayerPrefs.GetInt("fundo", 0);
+		string dig = PlayerPrefs.GetString("dig", "");
+
+		print (dig); 
+		if (!dig.Equals("Natal")){
+			print ("aqui");
+			neve.Stop();
+		}
 
         if (bgAtual == 0) {
             renderer.material = Default;
