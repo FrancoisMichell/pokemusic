@@ -33,6 +33,7 @@ public class PreviewDigManager : MonoBehaviour {
         situacaoNoiteDig = PlayerPrefs.GetString("noiteDig", "");
         situacaoHalloweenDig = PlayerPrefs.GetString("halloweenDig", "");
 
+
         moedas = GameObject.FindGameObjectWithTag("moeda");
         quantMoedas = PlayerPrefs.GetInt("moedas", 0);
 
