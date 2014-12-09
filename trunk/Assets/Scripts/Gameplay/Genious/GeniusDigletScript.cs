@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-//using UnityEngine.Advertisements;
+using UnityEngine.Advertisements;
 
 
 public class GeniusDigletScript : MonoBehaviour {
@@ -12,15 +12,16 @@ public class GeniusDigletScript : MonoBehaviour {
     //sequencia de strings enviadas pelo objectController 
     private List<string> sequencia = new List<string>();
     private bool touch;
-	//private bool adsShowing = false;
+	private bool adsShowing = false;
     
     //o indice da lista de sequencias que esta sendo usado atualmente
     private int posicaoSequencia = 0;
     private int tamanhoSequencia = 1;
 
-    private GameObject objectController;
-    public GameObject barraStatus1;
+	private GameObject objectController;
+    public GameObject barraStatus1, BarraAds;
     public GameObject barraStatus2;
+
 
     public TextMesh Score;
     public TextMesh Score2;
@@ -55,13 +56,15 @@ public class GeniusDigletScript : MonoBehaviour {
         digletLa = transform.FindChild("diglettLa");
         digletSi = transform.FindChild("diglettSi");
 
+
         objectController = GameObject.FindGameObjectWithTag("Launcher");
         geniusCamera = GameObject.FindGameObjectWithTag("MainCamera");
         //A maquina do modo Genius esta setada com a tag "BarraSom"
         maquinaGenius = GameObject.FindGameObjectWithTag("BarraSom");
 		//inicializar propaganda
 		
-        //Advertisement.Initialize ("20713");//esse numero e o id do jogo no unityads
+        Advertisement.Initialize ("20709");//esse numero e o id do jogo no unityads
+		BarraAds.transform.position = new Vector3(BarraAds.transform.position.x, BarraAds.transform.position.y, -5);
 
         listadiglets.Add(digletDo);
         listadiglets.Add(digletRe);
@@ -86,7 +89,7 @@ public class GeniusDigletScript : MonoBehaviour {
 			
 		}
 
-        print (PlayerPrefs.GetInt("moedas", _moedas + moedasTotais));
+
 		// codigo usado para visualização na unity
 		
 		//caso o indice da sequencia que esta sendo considerada neste momento for igual ao tamanho da lista de sequencias
@@ -125,23 +128,25 @@ public class GeniusDigletScript : MonoBehaviour {
 						} else if (c.CompareTag("colPausa")) {
 							break;
 						}
-                        //else if(c.CompareTag("Up")){}
-                        ////parte propaganda
-                        //else if (c.CompareTag("Ads")) {
-                        //    print ("kl");
-                        //    adsShowing = true;
-                        //    Advertisement.Show(null, new ShowOptions {
-                        //        pause = true,
-                        //        resultCallback = result => {
-                        //            adsShowing = false;
-                        //            if (result == ShowResult.Finished) {
+                        else if(c.CompareTag("Up")){}
+                        //parte propaganda
+                        else if (c.CompareTag("Ads")) {
+                            print ("kl");
+                            adsShowing = true;
+                            Advertisement.Show(null, new ShowOptions {
+                                pause = true,
+                                resultCallback = result => {
+                                    adsShowing = false;
+                                    if (result == ShowResult.Finished) {
+									
+                                        _moedas = _moedas*2;
+										Invoke("contarMoedas", 0.2f);
+										BarraAds.transform.position = new Vector3(BarraAds.transform.position.x, BarraAds.transform.position.y, 5);
 										
-                        //                _moedas = _moedas*2;
-										
-                        //            }
-                        //        }
-                        //    });
-                        //}
+                                    }
+                                }
+                            });
+                        }
 						
 						
 						
@@ -175,7 +180,7 @@ public class GeniusDigletScript : MonoBehaviour {
     //		}
 
     public void contarMoedas() {
-        if (_score > contaMoedas) {
+		if (_score > contaMoedas || _moedas > contaMoedas) {
             contaMoedas++;
         }
         moedasGanhas.text = contaMoedas.ToString();

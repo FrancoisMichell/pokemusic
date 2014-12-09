@@ -44,27 +44,27 @@ public class InfinityDigletScript : MonoBehaviour {
 			
 		}
 
-		if (Input.GetMouseButtonDown(0) && touch == true) {
-			Vector2 pos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
-			Collider2D[] col = Physics2D.OverlapPointAll (pos);		
+		//if (Input.GetMouseButtonDown(0) && touch == true) {
+			//Vector2 pos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
+			//Collider2D[] col = Physics2D.OverlapPointAll (pos);		
 
-			if(col.Length > 0)
-				foreach (Collider2D c in col){
-					Hitdiglet(c.transform);
-				}
-			}
+		//	if(col.Length > 0)
+			//	foreach (Collider2D c in col){
+			//		Hitdiglet(c.transform);
+			//	}
+			//}
 
 		//Codigo para multitoque. Esta comentado, pois so funciona no smartphone 
 
-//		Touch myTouch = Input.GetTouch(0);
-	//	Vector2 p = Camera.main.ScreenToWorldPoint(myTouch.position);
-	//	Collider2D[] myTouches = Physics2D.OverlapPointAll(p);
-	 //	if (myTouches.Length > 0 && touch == true){
-	//		foreach(Collider2D c in myTouches){
-		//			Hitdiglet(c.transform);
+		Touch myTouch = Input.GetTouch(0);
+		Vector2 p = Camera.main.ScreenToWorldPoint(myTouch.position);
+		Collider2D[] myTouches = Physics2D.OverlapPointAll(p);
+	 	if (myTouches.Length > 0 && touch == true){
+			foreach(Collider2D c in myTouches){
+					Hitdiglet(c.transform);
 
-	//	}
- 	//	}
+		}
+ 		}
 	}
 
 	public void Upall() {
