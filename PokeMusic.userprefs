@@ -1,12 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Menu\PlayScript.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Gameplay\Infinity\InfinityDigletScript.cs">
     <Files>
-      <File FileName="Assets\Scripts\Gameplay\BackgroundManager.cs" Line="34" Column="19" />
-      <File FileName="Assets\Scripts\Menu\PlayScript.cs" Line="10" Column="10" />
-      <File FileName="Assets\Scripts\Menu\PreviewManager.cs" Line="43" Column="3" />
-      <File FileName="Assets\Scripts\Menu\PreviewDigManager.cs" Line="84" Column="65" />
-      <File FileName="Assets\Scripts\Menu\SceneTransition.cs" Line="19" Column="20" />
+      <File FileName="Assets\Scripts\Gameplay\Infinity\InfinityDigletScript.cs" Line="53" Column="42" />
+      <File FileName="Assets\Scripts\Gameplay\Infinity\BotaoMute.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Gameplay\Infinity\CameraInfinity.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Gameplay\Genious\GeniusDigletScript.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

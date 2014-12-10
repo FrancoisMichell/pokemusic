@@ -11,12 +11,9 @@ public class CloudInfinityScript : MonoBehaviour {
 
 		this.transform.position = new Vector3(this.transform.position.x+0.1f, this.transform.position.y, 2);
 		this.transform.localScale = new Vector3(this.transform.localScale.x+0.0027f, this.transform.localScale.y+0.0027f, 1);
-	}
-	
-	void OnTriggerEnter2D(Collider2D c)	{
-
-		if(c.CompareTag("RightFundo")){
-			Destroy(this.gameObject); 
+		if (this.transform.position.x > 40) {
+				Destroy (this.gameObject);
 		}
 	}
+
 }
