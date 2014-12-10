@@ -30,42 +30,46 @@ public class InfinityDigletScript : MonoBehaviour {
 		listadiglets.Add (digletSi);
 			
 
-		Upall ();
-//		Updiglet (listadiglets [Random.Range (0, 6)]);
+		Upall();
+//	Updiglet (listadiglets [Random.Range (0, 6)]);
 	}
 
 	// Update is called once per frame
 	void Update () {
 // codigo usado para visualização na unity
-		foreach (Transform d in listadiglets){
-			Quaternion angulo = new Quaternion();
-			angulo.Set(0f,0f,0f,0f);
-			d.rotation = angulo;
+				foreach (Transform d in listadiglets) {
+						Quaternion angulo = new Quaternion ();
+						angulo.Set (0f, 0f, 0f, 0f);
+						d.rotation = angulo;
 			
+				}
+
+				if (Input.GetMouseButtonDown (0) && touch == true) {
+						Vector2 pos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
+						Collider2D[] col = Physics2D.OverlapPointAll (pos);		
+
+						if (col.Length > 0)
+								foreach (Collider2D c in col) {
+										if (c.transform.position.y > 4) {
+												continue;
+										} else {
+												Hitdiglet (c.transform);
+										}
+
+										//Codigo para multitoque. Esta comentado, pois so funciona no smartphone 
+
+										//Touch myTouch = Input.GetTouch(0);
+										//Vector2 p = Camera.main.ScreenToWorldPoint(myTouch.position);
+										//Collider2D[] myTouches = Physics2D.OverlapPointAll(p);
+										//if (myTouches.Length > 0 && touch == true){
+										//	foreach(Collider2D c in myTouches){
+										//		Hitdiglet(c.transform);
+
+										//	}
+										//	}
+								}
+				}
 		}
-
-		//if (Input.GetMouseButtonDown(0) && touch == true) {
-			//Vector2 pos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
-			//Collider2D[] col = Physics2D.OverlapPointAll (pos);		
-
-		//	if(col.Length > 0)
-			//	foreach (Collider2D c in col){
-			//		Hitdiglet(c.transform);
-			//	}
-			//}
-
-		//Codigo para multitoque. Esta comentado, pois so funciona no smartphone 
-
-		Touch myTouch = Input.GetTouch(0);
-		Vector2 p = Camera.main.ScreenToWorldPoint(myTouch.position);
-		Collider2D[] myTouches = Physics2D.OverlapPointAll(p);
-	 	if (myTouches.Length > 0 && touch == true){
-			foreach(Collider2D c in myTouches){
-					Hitdiglet(c.transform);
-
-		}
- 		}
-	}
 
 	public void Upall() {
 		foreach (Transform i in listadiglets){
